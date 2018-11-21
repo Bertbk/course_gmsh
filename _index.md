@@ -10,6 +10,12 @@ type = "docs"  # Do not modify.
 
 math = true
 
+[git]
+  icon = "github"
+  repo = "https://github.com/Bertbk/course_gmsh"
+  issue = "https://github.com/Bertbk/course_gmsh/issues"
+  prose = "https://prose.io/#Bertbk/course_gmsh/edit/master/"
+
 # Add menu entry to sidebar.
 [menu.gmsh]
   name = "Overview"

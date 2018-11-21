@@ -8,6 +8,13 @@ draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
+[git]
+  icon = "github"
+  repo = "https://github.com/Bertbk/course_gmsh"
+  issue = "https://github.com/Bertbk/course_gmsh/issues"
+  prose = "https://prose.io/#Bertbk/course_gmsh/edit/master/"
+  
+
 # Add menu entry to sidebar.
 [menu.gmsh]
   parent = "tips&tricks"
