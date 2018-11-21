@@ -47,7 +47,7 @@ Au lieu d'utiliser le langage propre à GMSH, il est possible d'utiliser l'API d
 
 ## Documentation
 
-1. **Officielle :** relativement exhaustive, n'hésitez pas à lire la documentation officielle :
+1. **Officielle :** plutôt exhaustive, n'hésitez pas à lire la documentation officielle :
   - [En ligne](http://gmsh.info/doc/texinfo/gmsh.html)
   - [En PDF](http://gmsh.info/doc/texinfo/gmsh.pdf)
 2. **Mailing list :** Vous pouvez aussi souscrire ou fouiller dans les archives de [la mailing-list de GMSH](http://www.geuz.org/mailman/listinfo/gmsh).
