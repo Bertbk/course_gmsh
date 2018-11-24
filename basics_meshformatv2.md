@@ -2,7 +2,7 @@
 title = "Physical Entity and mesh format (v2)"
 
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
+# lastmod = 2018-11-24T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -146,7 +146,7 @@ Line(10) = {1,2}; // Le numéro de l'entité élémentaire est 10
 ```
 
 Une `Physical Entity` englobe une ou plusieurs `Elementary Entities` et c'est ce label qui sera enregistré dans le fichier de maillage.
-Autrement dit, c'est grâce à que l'assembleur éléments finis (comme par exemple [FreeFem++](http://www.freefem.org) ou [GetDP](https://getdp.info)), saura discrimer les éléments selon leur emplacement (par exemple si le triangle appartient à $\Omega_1$ ou $\Omega_2$).
+Autrement dit, c'est grâce à ça que l'assembleur éléments finis (comme par exemple [FreeFem++](http://www.freefem.org) ou [GetDP](https://getdp.info)), saura discriminer les éléments selon leur emplacement (par exemple si le triangle appartient à $\Omega_1$ ou $\Omega_2$).
 
 {{% alert warning %}}
 La règle est la suivante :
@@ -161,7 +161,7 @@ Le numéro `Physical` est le premier `Tag` sauvegardé dans le fichier de mailla
 
 
 {{% alert note %}}
-Un corrolaire des règles ci-dessus : si l'on souhaite que le fichier de maillage contienne des éléments de bords (lignes, ...) pour pouvoir par exemple y appliquer une condition de Neumann, il faut alors créer une `Physical Entity` (par exemple `Physical Line` pour une ligne).
+Un corollaire des règles ci-dessus : si l'on souhaite que le fichier de maillage contienne des éléments de bords (lignes, ...) pour pouvoir par exemple y appliquer une condition de Neumann, il faut alors créer une `Physical Entity` (par exemple `Physical Line` pour une ligne).
 {{% /alert %}}
 
 
