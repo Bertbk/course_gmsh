@@ -51,7 +51,7 @@ De nombreux exemples utilisant ces fonctionnaliés sont [disponibles dans les so
 Nous en implémentons ici [un en particulier](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/boolean/boolean.geo), qui reproduit [l'illustration de la page dédiée à la CAO dans Wikipédia](http://en.wikipedia.org/wiki/Constructive_solid_geometry) :
 
 
-{{< figure library="1" src="teaching/gmsh/Csg_tree.png" title="Constructive solid Geometry (crédit: Wikipédia)" width="500" >}}
+{{< figure src="../Csg_tree.png" title="Constructive solid Geometry (crédit: Wikipédia)" width="500" >}}
 
 ```cpp
 SetFactory("OpenCASCADE");

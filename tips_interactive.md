@@ -61,7 +61,7 @@ ly = DefineNumber[1, Min 0.5, Max 10, Step 0.1, Name "Geometrie/Ly"];
 Rechargez le fichier avec `GMSH`, vous devriez obtenir l'image ci-dessous. Sur la gauche, vous pouvez modifier en *live* les valeurs de `lx` et `ly`.
 
 
-{{< figure library="1" src="teaching/gmsh/gui_interactive.png" title="Le GUI est maintenant interactif">}}
+{{< figure src="../gui_interactive.png" title="Le GUI est maintenant interactif">}}
 
 
 

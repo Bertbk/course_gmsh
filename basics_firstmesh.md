@@ -154,7 +154,7 @@ Reprenez le carré du début, puis :
 
 - Sur le point situé en (50,30), appliquez un raffinement de maillage 10 fois plus fin qu'ailleurs. Remaillez et observez.
 
-{{< figure library="1" src="teaching/gmsh/L.svg" title="L Shape">}}
+{{< figure src="../L.svg" title="L Shape">}}
 
 {{% /alert %}}
 
@@ -192,7 +192,7 @@ Nous allons rajouter un "trou" carré dans notre "L". Pour cela, dans le code et
 3. Modifiez la définition de la `Surface` pour prendre en compte cette nouvelle `Line Loop`
 4. Admirez le résultat en vous félicitant
 
-{{< figure library="1" src="teaching/gmsh/L_hole.svg" title="L-Shape avec un trou carré">}}
+{{< figure src="../L_hole.svg" title="L-Shape avec un trou carré">}}
 
 {{% /alert %}}
 
@@ -209,7 +209,7 @@ Construisons un cube à partir du carré à l'aide [d'une extrusion](https://fr.
 Extrude {0, 0, 11} { Surface{1}; }
 ```
 
-{{< figure library="1" src="teaching/gmsh/cube.png" title="Maillage du cube" width="300">}}
+{{< figure src="../cube.png" title="Maillage du cube" width="300">}}
 
 
 ## De cercles en cercles

@@ -139,7 +139,7 @@ Réalisez une tête de bonhomme avec un chapeau conique comme sur l'image ci-des
 {{% /alert %}}
 
 
-{{< figure library="1" src="teaching/gmsh/bonhomme.png" title="Bonhomme avec un chapeau conique" width="300" >}}
+{{< figure src="../bonhomme.png" title="Bonhomme avec un chapeau conique" width="300" >}}
 
 
 {{% alert exercise %}}
@@ -151,7 +151,7 @@ où `x`,`y`,`z` est le vecteur de l'axe de rotation, `xp`,`yp`,`zp` un point que
 {{% /alert %}}
 
 
-{{< figure library="1" src="teaching/gmsh/tasse.png" title="Tasse" width="300" >}}
+{{< figure src="../tasse.png" title="Tasse" width="300" >}}
 
 
 ###  Un mot sur `BooleanFragments`
@@ -175,7 +175,7 @@ Mesh 2; // Maille automatiquement au lancement de GMSH
 ```
 Après lancement nous obtenons un résultat décevant : deux maillages superposés !
 
-{{< figure library="1" src="teaching/gmsh/fragments_before.png" title="Maillage superposé : avant `BooleanFragments`">}}
+{{< figure src="../fragments_before.png" title="Maillage superposé : avant `BooleanFragments`">}}
 
 Pour remédier à cela, juste avant `Mesh 2;`, ajoutons :
 ```c++
@@ -183,7 +183,7 @@ BooleanFragments{ Surface{1,2}; Delete; }{}
 ```
 Nous obtenons alors 3 entités mais le maillage est maintenant unique et connecté :
 
-{{< figure library="1" src="teaching/gmsh/fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
+{{< figure src="../fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
 
 
 {{% alert note %}}
@@ -195,5 +195,5 @@ La place des arguments dans `BooleanFragments` n'a pas réellement d'importance.
 {{% alert exercise %}}
 Essayez de reproduire la pièce ci-dessous
 
-{{< figure library="1" src="teaching/gmsh/ecrou.png" title="Petit défi" >}}
+{{< figure src="../ecrou.png" title="Petit défi" >}}
 {{% /alert %}}

@@ -48,7 +48,7 @@ La caméra se manipule comme pour la visualisation de maillage :
 
 Ne pas hésiter à utiliser les boutons `X`, `Y` et `Z` en bas à gauche pour remettre la caméra sur un axe prédéfini
 
-{{< figure library="1" src="teaching/gmsh/gui_camera.png" title="Camera">}}
+{{< figure src="../gui_camera.png" title="Camera">}}
 
 
 {{% alert tips %}}
@@ -95,7 +95,7 @@ Parmi toutes les options, citons dans l'onglet `Visibility` la possibilité d'af
 - Les faces des éléments : pour les rendre opaques (visiblité)
 - Les Normales et les Tangentes (en bas) :
 
-{{< figure library="1" src="teaching/gmsh/gui_normals.jpg" title="Affichage des normales">}}
+{{< figure src="../gui_normals.jpg" title="Affichage des normales">}}
 
 
 ## Options spécifiques à une `View` (Post-Processing)
@@ -143,7 +143,7 @@ Nous pouvons ici :
 - Transformer (translation, rotation, ...) la solution : il faut changer la matrice (rotation) et le vecteur (translation).
 - `Normal Raise` : Permet d'afficher en 3D une solution 2D.  Accessible depuis le menu rapide (double clic). Exemple dans l'image ci-dessous :
 
-{{< figure library="1" src="teaching/gmsh/gui_normalraise.png" title="Exemple avec NormalRaise">}}
+{{< figure src="../gui_normalraise.png" title="Exemple avec NormalRaise">}}
 
 
 ### Color

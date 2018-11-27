@@ -47,7 +47,7 @@ Vous devriez obtenir deux cônes l'un sur l'autre, un peu comme un diamant.
 {{% alert exercise %}}
 Avec cette méthode, dessinez un sapin de Noël comme sur la figure ci-dessous.
 
-{{< figure library="1" src="teaching/gmsh/sapin.png" title="Sapin" >}}
+{{< figure src="../sapin.png" title="Sapin" >}}
 
 {{% /alert %}}
 
@@ -97,7 +97,7 @@ Extrude { {1,0,0}, {0,0,0}, 2*Pi} { Line{1,2,3} ;}
 {{% alert exercise %}}
 À vous de jouer : représentez une fiole à l'aide des `Spline`, avec ou sans support.
 
-{{< figure library="1" src="teaching/gmsh/fiole.png" title="Fiole avec ou sans support" >}}
+{{< figure src="../fiole.png" title="Fiole avec ou sans support" >}}
 
 {{% /alert %}}
 
