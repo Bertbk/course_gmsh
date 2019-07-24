@@ -8,11 +8,12 @@ draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
+edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master", submodule_dir="content/course/gmsh/"}
+
 [git]
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
-  issue = "https://github.com/Bertbk/course_gmsh/issues"
-  prose = "https://prose.io/#Bertbk/course_gmsh/edit/master/"
+  submodule_dir = "content/course/gmsh/"
   
 
 # Add menu entry to sidebar.
