@@ -28,8 +28,11 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
+{{% alert note %}}
+Only few of the possibilities are shown here. Please have a look at [the official documentation](http://gmsh.info/doc/texinfo/gmsh.html) for every other operations.
+{{% /alert %}}
 
-## Curves (not segment)
+## Circular curve
 
 Open a new file, `circle.geo`, and insert the following code:
 ```c++
@@ -53,9 +56,16 @@ Plane Surface(1) = {1};     // Surface
 Physical Surface(1) = {1};  // Physical Tag
 ```
 
-GMSH should display a disk. The  `Circle` command draw a circle arc (with angle less than π). It needs three `Point` to be fully defined:
+GMSH should display a disk and a menu on the left with 2 parameters that can be modified on runtime :
+
+TODO: figure
+
+
+What is defined in `DefineConstant` is explained in the [section dedicated to the GUI (Graphical User Interface)]({{<relref "/tips_interactive.md">}}) but basically, these lines add parameters that can be modified by the user in the GUI.
+
+What is interesting here is the `Circle` commands that draws an arc (with angle less than π). It needs three `Point` to be fully defined (start, center, end):
 ```c++
-Circle(index) = {PointA, Center, PointB};
+Circle(index) = {PointA, PointCenter, PointB};
 ```
 Note that drawing a circle needs 3 points at minimum (instead of 4).
 

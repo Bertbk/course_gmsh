@@ -29,41 +29,40 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-## Pourquoi faire ?
+## Why?
 
-Plutôt que d'utiliser le moteur de CAO interne à GMSH, nous utilisons dorénavant le moteur [OpenCascade](https://www.opencascade.com/). Les avantages sont les suivants :
+GMSH's engine is great but cannot manage boolean operations, which is a classical tool in CAD (Computer Aided Design). The open-source and powerful [OpenCascade](https://www.opencascade.com/) engine can be used in GMSH which provides numerous advantages, for example:
 
-- Géométries "prêtes à l'emploi" (cf. [La documentation \(cherchez "Cylinder" par ex.\)](http://gmsh.info/doc/texinfo/gmsh.html)) :
-  - 2D : rectangle, disque, ...
-  - 3D : pavé, sphère, tore, cône, cylindre, ...
-- Gestion des Splines
-- Outils Booléens classiques de CAO entre plusieurs entités comme :
-  - Union
-  - Différence
-  - Intersection
-  - Fragmentation
+- "Ready-to-use" **geometries**:
+  - 2D : rectangle, disk, ...
+  - 3D : box, sphere, tor, cone, cylinder, ...
+- **Splines**
+- **Boolean operations**: Union, Difference, Intersection, Fragmentation
 
-Le principal désavantage est que nous *ne connaissons plus a priori* les numéros de toutes les entités puisque c'est OpenCascade qui s'en charge. En particulier :
+The major drawback is that the index of created entities are managed by OpenCascade and hence **are no longer known a priori**, especially:
 
-- Pour un maillage anisotropique (finesse de maille différente par région): il faut rechercher les points *a posteriori* pour leur assigner une taille de maille.
-- Il est parfois nécessaire de faire des aller-retour avec l'interface graphique pour retrouver les numéros des entités intermédiaires (lignes, surfaces, ...)
+- For an anisotropic mesh (different mesh size per region): `Point` with different mesh size must be sough *a posteriori*
+- During the design part, indices of the elementaty entities can be found via the GUI, leading to switching between code and GUI
 
-Néanmoins, nous conseillons **fortement** d'utiliser ce moteur de CAO plutôt que celui de base.
+It's however **highly** recommended to use this CAD engine instead of the native one. The few drawbacks listed above can moreover be easily circumvent.
 
 
-## Un exemple
+## A short example
 
-De nombreux exemples utilisant ces fonctionnaliés sont [disponibles dans les sources de GMSH](https://gitlab.onelab.info/gmsh/gmsh/tree/master/demos/boolean).
-Nous en implémentons ici [un en particulier](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/boolean/boolean.geo), qui reproduit [l'illustration de la page dédiée à la CAO dans Wikipédia](http://en.wikipedia.org/wiki/Constructive_solid_geometry) :
+{{% alert note %}}
+Numerous example using boolean operations can be found in the [`demos/boolean` folder in the source code of GMSH](https://gitlab.onelab.info/gmsh/gmsh/tree/master/demos/boolean).
+{{% /alert %}}
+
+An example of CAD object is provided on [the dediacted wikipedia page](http://en.wikipedia.org/wiki/Constructive_solid_geometry):
 
 
 {{< figure src="../Csg_tree.png" title="Constructive solid Geometry (crédit: Wikipédia)" width="500" >}}
 
+In GMSH and using OpenCascade, the file [`demos/boolean.geo`](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/boolean/boolean.geo) reproduce it in a few lines only:
+
 ```cpp
 SetFactory("OpenCASCADE");
-
 // from http://en.wikipedia.org/wiki/Constructive_solid_geometry
-
 Mesh.Algorithm = 6;
 Mesh.CharacteristicLengthMin = 0.4;
 Mesh.CharacteristicLengthMax = 0.4;
@@ -76,7 +75,6 @@ Rt = DefineNumber[ R*1.25, Min 0.1, Max 2, Step 0.01,
   Name "Parameters/Sphere radius" ];
 
 Box(1) = {-R,-R,-R, 2*R,2*R,2*R};
-
 Sphere(2) = {0,0,0,Rt};
 
 BooleanIntersection(3) = { Volume{1}; Delete; }{ Volume{2}; Delete; };
@@ -90,5 +88,5 @@ BooleanDifference(8) = { Volume{3}; Delete; }{ Volume{7}; Delete; };
 ```
 
 {{% alert exercise %}}
-Copiez/Collez le code dans un fichier `.geo`. Maillez en 2D pour voir apparaitre la géométrie voulue.
+Try it! Mesh in 2D and you should see the wanted geometry.
 {{% /alert %}}

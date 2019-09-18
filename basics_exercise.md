@@ -33,5 +33,3 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 Draw the following figure representing a stadium. Please remember that GMSH (and neither you!) can draw an arc of circle with an angle greater or equal to π: intermediate `Point` might be added and the half-circle should be split in (at least) two arcs.
 
 {{<figure src="../stadium.svg"  title="Stadium">}}
-
-

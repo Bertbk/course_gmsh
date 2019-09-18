@@ -30,177 +30,204 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-## Géométries
+## Geometries
 
-### Exemple : un pavé
+### Example of a `Box`
 
-Ouvrez un fichier, par exemple `pave.geo` et placez le code suivant au tout début du fichier:
+Open a new file, `box.geo`, and copy/paste the following line on top of the file:
 ```cpp
   SetFactory("OpenCASCADE");
 ```
-Cette commande spécifie à GMSH que l'on utilise dorénavant le moteur CAO OpenCascade. Pour celui-ci, la taille des mailles n'est plus définie au niveau des `Point` (bien que l'on doive/puisse continuer à le faire). Pour garder le contrôle sur la finesse de maille, nous devons utiliser les commandes `Mesh.CharacteristicLengthMin` et `Mesh.CharacteristicLengthMax`. Ajoutez à la suite du fichier ceci :
+This command forces GMSH to use OpenCascade engine instead of the native one. 
+
+With this engine, you generally do not have to build the `Point` by hand, as ready-to-use geometries are provided. The mesh size must however still be set on every `Point`. A handy way to set the same mesh size to every `Point` is to use the two commands `Mesh.CharacteristicLengthMin` and `Mesh.CharacteristicLengthMax` at the beginning of the file :
 ```cpp
-h = 0.1; // ou ce que vous voulez
+SetFactory("OpenCASCADE");
+
+h = 0.1; // or whatever
 Mesh.CharacteristicLengthMin = h;
 Mesh.CharacteristicLengthMax = h;
 ```
-Au lieu d'ajouter des `Point` et des `Line`  et autres entités pour construire notre pavé, nous utilisons la commande `Box`
+
+Now, we are going to build the box. Instead of creating the `Point`, `Line`, `Surface` and finally the `Volume`, add the following line to the file
 ```cpp
-Box(indice) = {x, y, z, lx, ly, lz};
+Box(1) = {0, 0, 0, 1, 1, 1};
 ```
-où `indice` sera l'indice du `Volume` (uniquement !), `x`,`y`,`z` les coordonnées du point "en bas à gauche", tandis que `lx`,`ly`,`lz` sont les dimensions respectivement en x, y et z du cube. *Et c'est tout !* (⌐■_■).
+And here you go (⌐■_■) ! A nice box of size 1 in every direction (*e.g* a cube), in a single line!
+
+The `Box` commands have the following syntax:
+```cpp
+Box(index) = {x, y, z, lx, ly, lz};
+```
+where 
+- `index`: unique identifier of the resulting elementary `Volume`
+- `x`,`y`,`z`: cartesian coordinates of the "bottom left" point
+- `lx`,`ly`,`lz`: size in the (resp.) x-,y- and z- direction of the box
 
 {{% alert exercise %}}
-À vous de jouer !
+Time to play!
 
-1. Créez un fichier `pave.geo` et réalisez cube unitaire (ou pas) à l'aide de cette commande
-2. Maillez en 2D
-3. Vérifiez [l'orientation des normales]({{< relref "tips_gui.md#options-mesh" >}})
-4. Maillez en 3D
-5. Admirez la simplicité
+1. Build a box with `lx` = 1, `ly` = 0.5 and `lz` = 0.75
+2. Mesh in 2D
 {{% /alert %}}
 
 
 {{% alert note %}}
-À l'aide de l'interface graphique nous pouvons vérifier [l'orientation des normales]({{< relref "tips_gui.md#options-mesh" >}}) (`Tools→Option→Mesh` puis spécifier une valeur (*e.g* 50) à Normals (en bas à gauche))
+Using the GUI, you can check the orientation of the [normal vector on the surface]({{< relref "tips_gui.md#options-mesh" >}}): `Tools→Option→Mesh` then select a value (*e.g* 50) at `Normals` (bottom left).
 {{% /alert %}}
 
-### Quelques géométries disponibles
+### Some available geometries
 
-Voici quelques géométries disponibles et leur syntaxe :
-
-- `Disk(indice)= {x,y,z,R}` : Disque de rayon `R` et de centre `x`,`y`,`z`
-- `Rectangle(indice)= {x,y,z,lx,ly}` : Rectangle dans le plan *(x,y)* dont le point "en bas à gauche" est de coordonnées `x`,`y`,`z` , et de dimension `lx` et `ly` .
-- `Sphere(indice)= {x,y,z,R}` : Sphère de rayon `R` et de centre `x`,`y`,`z` .
-- `Cylinder(indice)= {x,y,z, xv, yv, zv, R, alpha}` : Cylindre de rayon `R` à partir d’un cercle de centre `x`,`y`,`z` extrudé selon le vecteur `xv`,`yv`,`zv` . Le paramètre `alpha` est optionnel et représente l’ouverture angulaire.
-- `Torus(indice)= {x,y,z,R1, R2}` : Tore de rayons `R1` et `R2` et de centre `x`,`y`,`z` .
-- `Cone(indice)= {x,y,z, dx,dy,dz,R1, R2}` : Cône de centre `x`,`y`,`z` , de direction `dx`,`dy`,`dz` et de rayons `R1` et `R2` (qui peuvent être nuls).
-
-
-## Opérations booléennes ou la CAO like a boss (⌐■_■)
+| Dim. | Name and syntax| Description|
+|---|---|---|
+|2D| `Disk(index)= {x,y,z,R}` | Disk of radius `R` and center (`x`,`y`,`z`)|
+|2D| `Rectangle(index)= {x,y,z,lx,ly}` | Rectangle in the *(x,y)* plan which the "bottom left" point is located at (`x`,`y`,`z`). The rectangle sizes are `lx` and `ly` in the x- and y-direction respectively |
+|3D| `Sphere(index)= {x,y,z,R}` | Sphere of radius `R` and of center (`x`,`y`,`z`) |
+|3D| `Cylinder(index)= {x,y,z, xv, yv, zv, R, alpha}` | Cylinder of radius `R` build from a circule of center (`x`,`y`,`z`), extruded along the vector (`xv`,`yv`,`zv`) . Optional parameter `alpha` represents angular opening of the Cylinder (for partial disk) |
+|3D| `Torus(index)= {x,y,z,R1, R2}` | Torus of radii `R1` and `R2` and of center (`x`,`y`,`z`)|
+|3D| `Cone(index)= {x,y,z, dx,dy,dz,R1, R2}` | Cone of center (`x`,`y`,`z`) , of direction (`dx`,`dy`,`dz`) and of radii `R1` and `R2` (which can be zero!)|
 
 
-Au nombre de 4, les opérations ont toute la même syntaxe et prennent deux arguments : un `objet` (1<sup>er</sup> argument) et un `outil` (2<sup>nd</sup> argument) :
+## Boolean operations: CAD like a boss (⌐■_■)
+
+### General Syntax
+
+Four boolean operations are available in GMSH. They all need two input arguments: an `object` (first argument) and a `tool` (second argument). The index of the created element can be provided by the user but remember that the result can "different" from what expected: a boolean operation can create multiple entities and hence, applying a single index does not make sense!
 
 ```cpp
-//Deux syntaxes possibles (attention au point virgule (ou pas)) :
-// 1. Numéro de l'entité créée non connu  /!\ pas de ";" /!\
+//Two possible syntax (beware the ";")
 BooleanOperation{Object_List; Delete; }{Tool_List; Delete;} 
-// 2. Entitée crée aura pour label "indice" (si possible) /!\ se termine par ";" /!\
-BooleanOperation(indice) = {Object_List; Delete; }{Tool_List; Delete;} ;
+BooleanOperation(index) = {Object_List; Delete; }{Tool_List; Delete;} ;
 ```
-Les `List` sont des listes d'entités (`Point, Line, Surface, Volume`). Par exemple, la liste des `Line` numéro 2, 3 et 6 ainsi que des `Surface` de tous les numéros de 42 à 50 et des `Volume` 11 et 15 s'écrira :
+The `Object_List` and `Tool_List` are not list in the programming point of view rather that an enumeration of entities (`Point, Line, Surface, Volume`). For example, the list of `Line` numbered 2, 3 and 6, `Surface` of every number from 42 to 50 and `Volume` 11 and 15 will be written as:
 ```cpp
 Line{2,3,6}; Surface{42:50}; Volume{11,15};
 ```
 
 {{% alert tips %}}
-`Delete;` est optionnel mais souvent conseillée : quand cette option est spécifié, les entités mises en argument sont supprimées. Autrement, il y a un risque (non nul) de doublon !
+`Delete;` is optional but generally recommended and forces GMSH to delete the entities passed as argument (both the `tool` and the `object`). Otherwise, there is a high risk of getting dupplicated entites!
 {{% /alert %}}
 
-Les 4 opérations possibles sont :
+### The 4 operations
 
-1. `BooleanIntersection{Liste; Delete;}{Liste; Delete;}`: Intersection entre l'`objet` et l'`outil`
-2.  `BooleanUnion{Liste; Delete;}{Liste; Delete;}` : Union entre l'`objet` et l'`outil`
-3. `BooleanDifference{Liste; Delete;}{Liste; Delete;}` : Soustraction de l'`outil` à l'`objet`
-4. `BooleanFragments{Liste; Delete;}{Liste; Delete;}` : Calcul de chaque fragments résultant de l'intersection des entités de l'`objet` et de l'`outil` et **suppression de toute entité en doublon** en rendant **chaque interface unique**. 
+
+| Name and syntax| Description|
+|---|---|
+|`BooleanIntersection`|Intersection between the `objet` et l'`outil`|
+| `BooleanUnion` |Union between the `object` and the `tool`|
+|`BooleanDifference`| Substracting  the `tool` to the `object`|
+|`BooleanFragments`| Compute each fragments resulting from the intersection of the entities of the `object` and of the `tool`. This command moreover **delete any dupplicated entities** and make every **interface ~~great again~~ unique**|
 
 {{% alert tips %}}
-Souvent sous-estimée, `BooleanFragments` est probablement une des opérations les plus utiles.
+`BooleanFragments` is probably the most usefull and powerful operation.
 {{% /alert %}}
 
 
-### Un exemple
+## Example: it's a good day to dice
 
-Rien de tel qu'un exemple pour prendre en main ces commandes avec celui du dé à 6 faces dont le code est le suivant (copiez/collez le dans un fichier `de.geo` par exemple) :
+### Code and expectation
+
+There is nothing better as an example to understand a tool. Let's build a 6-faces dice in a `dice.geo` file (copy/paste the following code):
 ```cpp
 SetFactory('OpenCASCADE');
 Box(1) = {-0.5,-0.5,-0.5, 1, 1, 1};
 Sphere(2) = {0,0,0, 0.65};
 BooleanIntersection{ Volume{1}; Delete;}{ Volume{2}; Delete;}
 ```
-Analysons ligne par ligne ce code. Tout d'abord, nous imposons le moteur de CAO OpenCascade, puis nous construisons un cube (`Box`) et une sphère (`Sphere`), dont les entités `Volume` associées auront pour numéro 1 et 2 respectivement. Ensuite, nous lançons la commande
+
+TODO: image
+
+### Analyse of the code
+
+First, the OpenCascade is set (line 1), then the cube is created (`Box`) and a sphere (`Sphere`). The associated `Volume` indices are respectively 1 and 2. Finally, the boolean operation is launch
 ```cpp
 BooleanIntersection{ Volume{1}; Delete;}{ Volume{2}; Delete;}
 ```
-L'intersection a lieu entre le `Volume{1}`, le cube, et le `Volume{2}`, la sphère. Notons que les deux `Volume` seront détruits après la commande, du fait des deux "`Delete;`". La fonction `BooleanIntersection` calcule l'intersection des deux `Volume`. Pour cela, GMSH va créer un nouveau `Volume` ainsi que les éventuelles `Surface` et `Line` et les numéroter. Ces numéros sont choisis comme les premiers indices disponibles. Comme nous avons détruit les `Volume` 1 et 2, il y a de forte chance que  l'indice du nouveau `Volume` soit 1 (le label 1 étant devenu disponible).
+The intersection between `Volume{1}` (the cube) and `Volume{2}`(the sphere) is computed. Both `Volume` are then deleted due to `Delete;` but GMSH will create a new `Volume` and the possible `Surface` and `Line` associated and, obviously, will provide them a unique identifier. The indices are generally chosen as the "first number available". As the `Volume` 1 and 2 has been deleted, there is "high chance" that the index of the newly created `Volume` will be 1 (because "1" has been freed). This can be check by going in the menu, `Tools→Visiblity`, and check the elementary entities indices (see remark below).
 
 {{% alert warning %}}
-Attention ! La numérotation a changé ! Il faut donc être **très vigilant** puisque la numérotation des entités (`Line`, `Surface`, `Volume`, ...) est **modifiée** par l'utilisation des `Delete` dans les opérations booléennes !
+Huge Warning. Numbering has been changed! You have to be **very careful** with that! `Line`, `Surface` and `Volume` indices are **modified** by the `Delete` in the boolean operations!
 {{% /alert %}}
 
 
-{{% alert warning %}}
-La grande difficulté pour l'utilisateur réside maintenant dans la numérotation des entités. Il faut faire très attention : en cas d'utilisation de commandes booléennes, GMSH est parfois obligé de modifier, de manière importante, la numérotation des entités. Il est dès lors conseillé après avoir effectué une telle opération, de regarder **manuellement** les numéros des entités (nouvelles et anciennes) dans GMSH dans `tools→Visiblity` puis de choisir `Elementary Entities` dans le menu déroulant situé en bas à gauche. La fenêtre peut aussi s'ouvrir par le raccourci clavier `ctrl + shift + v`.
+{{% alert tips %}}
+It can be necessary to **manually** check  the indices of the newly created entities in `Tools→Visiblity` menu (shortcut: `ctrl + shift + v`). Chose then to display `Elementary Entities` in the dropdown menu at bottom left.
 {{% /alert %}}
 
 
-{{% alert note %}}
-Sans la commande `Delete`, vous constaterez dans la fenêtre de visualisation (`Tools→Visiblity`), qu'il existe alors plus qu'un `Volume`. Cependant, ils se "chevauchent" certainement...
+{{% alert exercise %}}
+Try it without the `Delete;` command and have a look in the visualisation window (`Tools→Visiblity`). You should see multiple `Volume` that overlap each other...
 {{% /alert %}}
 
 
 
 {{% alert exercise %}}
-Réalisez une tête de bonhomme avec un chapeau conique comme sur l'image ci-dessous. Veillez à ce que, au final, il n’y ait qu’un seul `Volume`. Pour simplifier : la sphère est de centre (0,0,0) et de rayon 1 tandis que le cône est de paramètre (0, 0, 0.5, 0, 0, 1, 1.5, 0).
+Draw this head with a conical hat as in the following figure. Be sure that, in the end, there is only one `Volume`.
+
+To help you design this nice geometry: the sphere is centered at (0,0,0) with a radius equal to 1 while the cone is of parameter (0, 0, 0.5, 0, 0, 1, 1.5, 0).
+
+{{< figure src="../bonhomme.png" title="Head with a conical hat" width="300" >}}
+
 {{% /alert %}}
 
 
-{{< figure src="../bonhomme.png" title="Bonhomme avec un chapeau conique" width="300" >}}
+##  A focus on `BooleanFragments`
 
+Probably the most usefull but the less intuitive operation, `BooleanFragments`, does the following two operations:
 
-{{% alert exercise %}}
-Réalisez une tasse comme sur l'image ci-dessous. Nous pouvons utiliser la rotation :
-```cpp
-Rotate{{x,y,z}, {xp,yp,zp}, a}{liste}
-```
-où `x`,`y`,`z` est le vecteur de l'axe de rotation, `xp`,`yp`,`zp` un point quelconque de l'axe de rotation, et `a` l'angle (en radian) de rotation. La `liste` contient les entités à modifier (`Line`, `Surface`, `Volume`, ...). La quantité π dans GMSH est obtenue par la commande `Pi`.
-{{% /alert %}}
+1. **Fragment** the elementary entities: each intersection between entities are computed and become a newly entity with its own index
+2. **Delete** every dupplicated entity, in particular **common boundaries** (*e.g* between two `Surface` or `Volume`)
 
-
-{{< figure src="../tasse.png" title="Tasse" width="300" >}}
-
-
-###  Un mot sur `BooleanFragments`
-
-Probablement la plus utile et la moins intuitive des fonctions, `BooleanFragments` effectue deux opérations :
-
-- **Fragmente** les entités : chaque intersection entre les entités devient une entité à part entière avec son propre numéro
-- **Supprime** tous les doublons, en particulier les frontières en commun
-
-Prenons par exemple le cas d'un carré et d'un disque d'intersection non nulle :
+Let us take the simple case of a geometry composed by a square and a disk with non empty intersection:
 
 ```c++
 SetFactory("OpenCASCADE");
 Mesh.CharacteristicLengthMin = 0.1;
 Mesh.CharacteristicLengthMax = 0.1;
-
 Rectangle(1) = {-0.5,-0.5, 0, 1, 1};
 Disk(2) = {0.75, 0, 0, 0.75, 0.75};
-
-Mesh 2; // Maille automatiquement au lancement de GMSH
+Mesh 2; // Force GMSH to mesh
 ```
-Après lancement nous obtenons un résultat décevant : deux maillages superposés !
 
-{{< figure src="../fragments_before.png" title="Maillage superposé : avant `BooleanFragments`">}}
+Opening this file in GMSH is a deceiving experience: there are 2 meshes and they are overlapping each other!
 
-Pour remédier à cela, juste avant `Mesh 2;`, ajoutons :
+{{< figure src="../fragments_before.png" title="Without `BooleanFragments`: overlapping meshes">}}
+
+Let us now add the fragmentation:
 ```c++
+SetFactory("OpenCASCADE");
+Mesh.CharacteristicLengthMin = 0.1;
+Mesh.CharacteristicLengthMax = 0.1;
+Rectangle(1) = {-0.5,-0.5, 0, 1, 1};
+Disk(2) = {0.75, 0, 0, 0.75, 0.75};
 BooleanFragments{ Surface{1,2}; Delete; }{}
+Mesh 2; // Force GMSH to mesh
 ```
-Nous obtenons alors 3 entités mais le maillage est maintenant unique et connecté :
+Three entities are created (instead of only one) but there is only one (connected) mesh and no dupplicated boundaries. The three `Surface` can be regrouped lated into a single `Physical Tag` so this is absolutely not a problem.
 
 {{< figure src="../fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
 
 
 {{% alert note %}}
-La place des arguments dans `BooleanFragments` n'a pas réellement d'importance. On peut donc avoir un `outil` vide par exemple.
+Arguments order and placement in `BooleanFragments` has no really impact on the result. The `tool` argument can for example be empty as above.
 {{% /alert %}}
 
-## A little challenge
+## Training examples
+
 
 {{% alert exercise %}}
-Essayez de reproduire la pièce ci-dessous
+Create a nice mug as the below picture. You can use the `Rotation` operation to rotate the handle:
+```cpp
+Rotate{{x,y,z}, {xp,yp,zp}, a}{List}
+```
+where (`x`,`y`,`z`) is a vector on the rotation axis, (`xp`,`yp`,`zp`) a point on the axis and `a` the angle of rotation (in rad). The `List` argument contains the entities to be modified (`Line`, `Surface` and `Volume`). The quantity π in GMSH is given by the hard coded command `Pi`.
 
-{{< figure src="../ecrou.png" title="Petit défi" >}}
+{{< figure src="../tasse.png" title="Mug" width="300" >}}
+
+{{% /alert %}}
+
+{{% alert exercise %}}
+Try and reproduce the following geometry
+
+{{< figure src="../ecrou.png" title="Mecanichal piece" >}}
 {{% /alert %}}

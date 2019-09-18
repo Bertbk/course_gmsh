@@ -28,6 +28,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   weight = 10
 
 +++
+TODO: redo everything with new format
 
 {{% alert warning %}}
 Si vous utilisez GMSH en version 4 ou supérieur, vous devez ajouter ceci dans vos fichiers `.geo` :
