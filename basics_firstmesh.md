@@ -28,33 +28,41 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-## Mon premier carré
+## My first square
 
-1. Recopiez le code ci-dessous dans un fichier `carre.geo`
+### Let's go
 
-        h = 1; //Taille caractéristique des éléménts
-        Point(1) = {0, 0, 0, h};   // Construction des points
+1. Copy/paste the following code in a new file, named *e.g.* `square.geo`:
+
+        h = 1;                     // Characteristic length of a mesh element
+        Point(1) = {0, 0, 0, h};   // Point construction
         Point(2) = {10, 0, 0, h};
         Point(3) = {10, 10, 0, h};
         Point(4) = {0, 10, 0, h};
-        Line(1) = {1,2};   //Des lignes
+        Line(1) = {1,2};            //Lines
         Line(2) = {2,3};
         Line(3) = {3,4};
         Line(4) = {4,1};
-        Line Loop(1) = {1,2,3,4};   //Définition d'un pourtour (d'un bord)
-        Plane Surface(1) = {1};     //Définition d'une surface
-        Physical Surface(1) = {1};  //A sauvegarder dans le fichier de maillage
+        Curve Loop(1) = {1,2,3,4};   // A Boundary
+        Plane Surface(1) = {1};     // A Surface
+        Physical Surface(1) = {1};  // Setting a label to the Surface
 
-2. Ouvrez votre fichier dans GMSH `files->open`, ou alors le raccourci clavier `CTRL+o`). On peut aussi taper la commande `gmsh carre.geo` directement dans un terminal (attention, cela ouvre une nouvelle instance de GMSH).
-3. Dans l'interface graphique apparait le carré. Avec la souris, vous pouvez effectuer effectuer une rotation (`click gauche`) ou une translation (`click droit`) de la caméra.  Le zoom/dézoom est possible avec `la molette`. Sur la fenêtre GMSH, les boutons `X,Y,Z` situés en bas à gauche permettent de remettre la caméra sur les axes.
-4. Mailler ensuite en appuyant sur `2` (ou `shift+2`) ou bien via l'interface graphique en cliquant  `Mesh->2D`.
-5. Le domaine est maintenant triangulé !
+2. In GMSH, go to `files->open` (`CTRL+o`) and open the file, or type `gmsh square.geo` in a terminal (warning: this open a new instance of GMSH (which is very light by the way!)).
+3. A square should have appear in GMSH's windows. The camera can be adjusted using the mouse: rotating (`left click`), translating (`right click`) or zooming (`wheel`). At bottom left of GMSH's windows, camera can be reseted using `X,Y,Z` and `1:1` (scale) buttons.
+4. The square can now be meshed by typing `2` on the keyboard (or maybe `shift` + `2`) or using the menu: `Mesh->2D`
+
+TODO: figure des boutons
+
+TODO: figure du maillage du carré
 
 
-GMSH dispose d'une console permettant de suivre l'avancement et/ou d'étudier les erreurs. Il suffit de cliquer sur la barre en bas (plutôt à droite) de la fenêtre. Dans notre cas et après maillage, par exemple, la sortie donne
+### Log
+
+GMSH is provided with a log console that can be displayed by clicking on the bottom banner of the window. For the square example, you should have something like
+
 ``` bash
-Info    : Reading 'carre.geo'...
-Info    : Done reading 'carre.geo'
+Info    : Reading 'square.geo'...
+Info    : Done reading 'square.geo'
 Info    : Finalized high order topology of periodic connections
 Info    : Meshing 1D...
 Info    : Meshing curve 1 (Line)
@@ -67,155 +75,137 @@ Info    : Meshing surface 1 (Plane, Delaunay)
 Info    : Done meshing 2D (0.017519 s)
 Info    : 142 vertices 286 elements
 ```
-Nous constatons que GMSH commence par mailler les lignes (Meshing 1D...) une à une, puis la surface. Dans notre cas, 142 nœuds (Vertices, en anglais) ont été créés pour un total de 286 éléments.
+
+This shows that GMSH starts by meshing the four lines (`Meshing 1D...`) then the surface. In this example, 142 vertices have been created for a total of 286 elements (lines and triangles).
 
 
 {{% alert note %}}
-Vous pouvez sauvegarder le maillage avec `CTRL + Shift + s` ou alors via l'interface graphique `file->save mesh`. Par défaut, GMSH sauvegarde le maillage dans un fichier d'extension `.msh` et de même nom que le fichier `.geo`.
+Mesh can be saved using `CTRL + Shift + s` or using graphical interface (`file->save mesh`). By default, the extension of the mesh is `.msh` and of the same root as the `.geo` file (*i.e.* `square.geo` leads to `square.msh`).
 {{% /alert %}}
 
 
 {{% alert note %}}
-[Le GUI est détaillé dans la section dédiée]({{< relref "/tips_gui.md">}}).{{% /alert %}}
+[GUI is detailed in a next section]({{< relref "/tips_gui.md">}}).
+{{% /alert %}}
 
-## Analysons le code ligne par ligne
+## Code analyse
 
-### Le paramètre `h`
+### Parameter `h`
 
-La première ligne définie une variable, `h`, qui sera la taille caractéristique des mailles.
-La taille des mailles est définies au niveau des `Point`.
+On the first line of our code is defined a variable, `h`, which is the characteristic length of the elements.
+This size is precised at each `Point` elementary entity.
 
 {{% alert exercise %}}
-Jouons avec la finesse de maille :
+Let us play with it (check the tips bellow first):
 
-1.  Modifiez le paramètre `h`, remaillez et observez le résultat.
-2.  Dans notre code, à chaque `Point` est affecté le même `h`. Modifiez le code pour que les mailles proches du `Point(2)` soient de taille `h/10`.
-3.  Remaillez.
+1. Modify the parameter `h`, remesh and observe the result
+2. Anisotropic mesh: change only the mesh size of `Point(2)`, for example with `h/10`. Remesh and observe the result
 {{% /alert %}}
 
 {{% alert tips %}}
-Une fois le fichier texte modifié, pour mettre à jour GMSH appuyez sur la touche zéro `0` (ou possiblement `shift` + `0`). Cela remet GMSH à zéro et relit le fichier texte.
+When the file has been modified, there is no need to relaunch GMSH: simply press `0` (zero) (or maybe `shift` + `0`). This forces GMSH to reset and re-read the current file.
 {{% /alert %}}
 
 
-### Les `Point`
+### `Point` entity
 
-Dans GMSH, on commence par définir les éléments 0D (points), 1D (lignes, courbes, ...), puis 2D (surfaces) et enfin les éléments 3D (volumes). Pour définir un point, la syntaxe est la suivante
+In GMSH, a volume (3D) is defined by its surfaces, a surface (2D) by its (closed) curves and a curve (1D) by its endpoints. Each of these, `Volume`, `Surface`, `Curve` and `Point` are named **elementary entities** in GMSH. The first one that is studied here are the 0D entity: `Point`. They are defined as follows
+
 ```cpp
-Point(indice) = {x, y, z, h};
+Point(index) = {x, y, z, h};
 ```
-Avec comme paramètres :
+where the parameters are:
 
-- `indice` : Numéro du point. Il peut être défini en dur (1,2,13242, ...) ou alors GMSH peut utiliser le prochain indice libre en utilisant la commande `newp` (pour "New Point").
-- `x`, `y`, `z` : les coordonnées cartésiennes du point.
-- `h` : la finesse de maille autour du point.
+- `index`: unique identifier (`int` > 0) of the `Point`. This number has to be set by the user, either manually or using `newp` which returns the next available index for `Point` (`newp` = *NEW Point*).
+- `x`, `y`, `z`: cartesian coordinate of the `Point`
+- `h`: mesh element size around the `Point`
 
 
 {{% alert exercise %}}
-Effectuez les changements suivants :
+Apply the following change to `square.geo`:
 
-  1. Modifiez le carré pour en faire un rectangle (non carré)
-  2. Modifiez le rectangle pour en faire un parallèlogramme non rectangulaire
+1. Move some `Point` to obtain a rectangle (instead of a square)
+2. Move some `Point` to get a quadrangle not rectangular at all
 {{% /alert %}}
 
 
-### Les `Line` et les `Line Loop`
+### `Line` and `Curve Loop` entities
 
-Les lignes, ou plutôt les segments, relient deux points et leur syntaxe est la suivante
+#### `Line`
+
+It is an oriented segment linking two `Point`:
 ```c++
-  Line(indice) = {PointA, PointB};
+  Line(index) = {PointA, PointB};
 ```
 Avec comme paramètres :
 
-- `indice` : Numéro de la ligne. Comme pour les points, la commande `newl` fournit le prochain indice libre de ligne.
-- `PointA` : indice du point de départ
-- `PointB` : indice du point d'arrivée
+- `index`: unique identifier (`int` > 0) of the `Line`. As for `Point`,this number has to be set by the user, either manually or using `newl` (next available index for `Line`).
+- `PointA`: index of the starting `Point`
+- `PointB`: index of the ending `Point`
 
 {{% alert warning %}}
-Une `Line` est orientée !
+A `Line` is oriented!
 {{% /alert %}}
 
-Une `Line Loop` est une union fermée de lignes (attention à l'orientation), c'est un "bord" :
-```c++
-Line Loop(indice) = {Line1, Line2, ..., LineN};
-```
-Avec :
+#### `Curve Loop`
 
-- `indice` : Numéro de la `Line Loop` (`newll` pour le prochain indice libre)
-- `LineX` : indice de la X<sup>ème</sup> `Line`. Cette quantité peut être signée (*e.g.* -10) afin de parcourir le segment dans l'autre sens.
+Closed loop of `Curve` (`Line` being a `Curve`) that represent a boundary (for a `Surface` generally):
+```c++
+Curve Loop(index) = {Curve1, Curve2, ..., CurveN};
+```
+Where:
+- `index`: Unique identifier (`int` > 0) of the `Curve Loop` (`newll` can be used)
+- `CurveX`: index of the X<sup>th</sup> `Curve` (or `Line`). If this quantity is negative (*e.g.* -10) then the `Curve` is oriented backwardly.
 
 {{% alert exercise %}}
-Reprenez le carré du début, puis :
-
-- Ajoutez des `Point` et des `Line` et modifiez la `Line Loop` de sorte que la géométrie ressemble à un "L" (voir ci-dessous) avec une taille de maille égale à 1. Les coordonnées des points sont données dans le tableau ci-dessous :
-
-| x | y |
-|-------|--------|
-| 0 | 0 |
-| 100 | 0 |
-| 100 | 30 |
-| 50 | 30 |
-| 50 | 100 |
-| 0 | 100 |
-
-- Sur le point situé en (50,30), appliquez un raffinement de maillage 10 fois plus fin qu'ailleurs. Remaillez et observez.
-
-{{< figure src="../L.svg" title="L Shape">}}
+Let's do a "L-shape" geometry in a new file `L.geo` as proposed in the below figure (Set a **mesh refinement** to `h`=1). You can copy/paste the previous `square.geo` file to help yourself.
+{{< figure src="../L.svg" title="L Shape geometry (with `h`=1 !)"  numbered="true">}}
 
 {{% /alert %}}
 
 
 
-### Les `Surface`
+### `Surface` entity
 
-Une `Surface` est définie par son bord, ou plutôt, ses `Line Loop`. La syntaxe est la suivante
+A `Surface` is defined by its boundaries: their `Curve Loop` (possibly more than one):
 ```c++
-Plane Surface(indice) = {LineLoop1, LineLoop2, ..., LineLoopN};
+Plane Surface(index) = {CurveLoop1, CurveLoop2, ..., CurveLoopN};
 ```
-Où l'on a :
 
-- `indice` : Numéro de la `Surface` (`news` pour le prochain indice libre de surface)
-- `LineLoopX` : indice de la X<sup>ème</sup> text `Line Loop`. Cette quantité peut être signée (*e.g.* -10) afin de parcourir la `Line Loop` dans l'autre sens.
+- `index`: Unique identifier (`int` > 0) of the `Surface` (`news` can be used)
+- `CurveLoopX`: index of the X<sup>th</sup> `Curve Loop`. As for the `Line`, this quantity can be negative (*e.g.* -10) to backwardly orient a `Curve Loop`.
 
 {{% alert exercise %}}
-Nous allons rajouter un "trou" carré dans notre "L". Pour cela, dans le code et avant la définition de la `Line Loop`, nous ajoutons un carré, avec les sommets, comme indiqué sur le tableau ci-dessous :
+Modify the "L-shape" geometry to add a hole inside as on the below figure. You will have to add `Point` and `Line` obvsiouly, but also a new `Curved Loop`. The `Surface` must then be defined by the 2 loops!
 
-| x     | y      |
-|-------|--------|
-| 0     |  0     |
-| 100   | 0     |
-| 100   | 30     |
-| 50    | 30    |
-| 50    | 100    |
-| 0     | 100     |
-| 20    | 10     |
-| 30    |  10    |
-| 30    | 20     |
-| 20    | 20     |
-
-1. Ajoutez les nouveaux `Point` et `Line` pour construire ce carré "interne"
-2. Ajoutez la `Line Loop` correspondante
-3. Modifiez la définition de la `Surface` pour prendre en compte cette nouvelle `Line Loop`
-4. Admirez le résultat en vous félicitant
-
-{{< figure src="../L_hole.svg" title="L-Shape avec un trou carré">}}
+{{< figure src="../L_hole.svg" title="L-Shape avec un trou carré" numbered="true">}}
 
 {{% /alert %}}
 
 
+### `Elementary Entities` vs. `Physical Entities`
 
-### Les `Elementary Entities` et les `Physical Entities`
+The last line of the file`square.geo` is:
+```
+Physical Surface(1)={1};
+```
+This is particular to GMSH and do not affect the geometry rather than the output mesh file. The command is the same for `Volume`, `Surface`, `Curve` and `Point`:
 
-Nous laissons la ligne `Physical Surface(1)={1};` de côté, ce sujet étant traité plus en détail dans [la section consacré au format de sortie](gmsh_meshformat.md).
+```
+Physical Volume/Surface/Line/Point(index) = {entity1, entity2, ..., entityN};
+```
 
-## `Extrude`: du carré au cube
+Basically, GMSH can set a unique identifier (`index`) to a **set of entities** (to regroup them). This new identifier has nothing to do with the previous one you have defined. The output file do not contain the `elementary` index but only the `physical` ones. Moreover, only the entities that have a `physical` tag are saved to the disk! This is [explained in detail later](gmsh_meshformat.md) for that). 
 
-Construisons un cube à partir du carré à l'aide [d'une extrusion](https://fr.wikipedia.org/wiki/Extrusion) selon la direction z donc selon le vecteur (0,0,1). Ajoutons au bout du fichier cette portion de code :
+## `Extrude`: from a square to a cube
+
+[Extrusion](https://en.wikipedia.org/wiki/Extrusion) is a nice way to build 3D geometries from 2D. Start from the `square.geo` file and add this line before the `Physical Surface(1)...` line:
 ```cpp
 Extrude {0, 0, 11} { Surface{1}; }
 ```
+You should obtain a cube:
 
-{{< figure src="../cube.png" title="Maillage du cube" width="300">}}
+{{< figure src="../cube.png" title="Mesh of the cube" width="300"  numbered="true">}}
 
 
 ## De cercles en cercles
@@ -237,14 +227,14 @@ Circle(1) = {2,1,3};
 Circle(2) = {3,1,4};
 Circle(3) = {4,1,5};
 Circle(4) = {5,1,2};
-Line Loop(1) = {1,2,3,4};   //Définition d'un pourtour (d'un bord)
+Curve Loop(1) = {1,2,3,4};   //Définition d'un pourtour (d'un bord)
 Plane Surface(1) = {1};     //Définition d'une surface
 Physical Surface(1) = {1};  //A sauvegarder dans le fichier de maillage
 ```
 
 Si tout va bien, GMSH affiche un cercle. La syntaxe de `Circle` est la suivante :
 ```c++
-Circle(indice) = {PointDepart, Centre, PointArrivee};
+Circle(index) = {PointDepart, Centre, PointArrivee};
 ```
 Pour dessiner un cercle, nous pourrions nous restreindre à 3 points uniquement plutôt que 4.
 
