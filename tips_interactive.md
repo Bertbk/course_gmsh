@@ -30,59 +30,50 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-## Géométrie de référence
+## Reference geometry
 
-Reprenons le code modélisant un rectangle de dimension `lx` et `ly` :
+Let us consider the rectangle of width `lx` and `ly` in the respectively x- and y-direction:
 
 ```c++
-h = 0.1; //Taille caractéristique des éléménts
-lx = 2; // Longueur
-ly = 1; // Largeur
-Point(1) = {0, 0, 0, h};   // Construction des points
-Point(2) = {lx, 0, 0, h};
-Point(3) = {lx, ly, 0, h};
-Point(4) = {0, ly, 0, h};
-Line(1) = {1,2};   //Les lignes
-Line(2) = {2,3};
-Line(3) = {3,4};
-Line(4) = {4,1};
-Line Loop(1) = {1,2,3,4};   //Le  bord
-Plane Surface(1) = {1};     //La surface du rectangle
-Physical Surface(1) = {1};  //Ce que l'on souhaite sauvegarder
+SetFactory("OpenCASCADE");
+h = 0.1;
+Mesh.CharacteristicLengthMin = h;
+Mesh.CharacteristicLengthMax = h;
+lx = 2;
+ly = 1;
+Rectangle(1)= {0, 0, 0, lx, ly};
+Physical Surface(1) = {1};
 ```
 
-Ce code construit un rectangle.
+## `DefineNumber` Adding parameters in the menu
 
-### Rendu modifiable via l'interface graphique
-
-Les paramètres `lx` et `ly` vont maintenant être rendu modifiable dans le GUI grâce à la commande `DefineNumber` de syntaxe :
+Parameters `lx` and `ly` will now be mutable in the GUI thanks to the command `DefineNumber`:
 ```c++
 DefineNumber[Var  = { DefautValue, ... options ...} ;
 ```
-Un exemple valant mieux qu'un long discours, modifiez les lignes définissant `lx` et `ly` par :
+To understand it better, change the lines defining `lx` and `ly` by:
 ```c++
-lx = DefineNumber[2, Min 0.5, Max 10, Step 0.1, Name "Geometrie/Lx"];
-ly = DefineNumber[1, Min 0.5, Max 10, Step 0.1, Name "Geometrie/Ly"];
+lx = DefineNumber[2, Min 0.5, Max 10, Step 0.1, Name "Geometry/Lx"];
+ly = DefineNumber[1, Min 0.5, Max 10, Step 0.1, Name "Geometry/Ly"];
 ```
-Rechargez le fichier avec `GMSH`, vous devriez obtenir l'image ci-dessous. Sur la gauche, vous pouvez modifier en *live* les valeurs de `lx` et `ly`.
+Reload the file using `GMSH` and your screen should looks like the figure below. On your left, you are now able to modify the value of `lx` and `ly` interactively (without reloading).
 
 
-{{< figure src="../gui_interactive.png" title="Le GUI est maintenant interactif">}}
-
+{{< figure src="../gui_interactive.png" title="GUI is now interactive with your script">}}
 
 
 {{% alert note %}}
-[Il existe de nombreuses options de personnalisation des variables](https://gitlab.onelab.info/doc/tutorials/wikis/ONELAB-syntax-for-Gmsh-and-GetDP)
+[Numerous customisation parameters are available!](https://gitlab.onelab.info/doc/tutorials/wikis/ONELAB-syntax-for-Gmsh-and-GetDP)
 {{% /alert %}}
 
 {{% alert exercise %}}
-Modifiez la ligne définissant `h` pour le rendre lui aussi modifiable par l'interface graphique avec par exemple un `Step` de 0.1 et tel que 0.1 < `h` < 1
+Make `h` editable in the GUI with a `Step` of 0.1 and such that 0.1 < `h` < 1.
 {{% /alert %}}
 
 
 ## `DefineConstant`
 
-Nous pouvons englober les `DefineNumber` à traver un `DefineConstant` global :
+Every `DefineNumber` can be merged into a `DefineConstant` environment:
 ```c++
 DefineConstant[
  // Attention, pas de virgule à la fin pour la derniere variable
@@ -93,4 +84,4 @@ DefineConstant[
 
 ## `DefineString`
 
-Cette commande fonctionne comme `DefineNumber` mais pour des chaînes de caractère
+In the same way as `DefineNumber`, this command returns a string.

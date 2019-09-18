@@ -30,13 +30,12 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-## Extrusion par rotation
+## Extrusion by rotation
 
-La syntaxe pour une telle extrusion est la suivante :
 ```cpp
-Extrude { { xr, yr, zr }, {xp, yp, zp}, alpha } { Liste}
+Extrude { { xr, yr, zr }, {xp, yp, zp}, alpha } { List }
 ```
-Avec (`xr`, `yr`, `zr`) un vecteur de l'axe de rotation, (`xp`, `yp`, `zp`) un point situé sur l'axe et `alpha` l'angle de rotation en radians (rappel: `Pi` pour π). La `Liste` contient les entités à extruder. Prenons un exemple simple :
+with (`xr`, `yr`, `zr`) a vector of the rotation axis, (`xp`, `yp`, `zp`) a point located on the axis and `alpha` the rotation angle (in rad, recal that π=`Pi`). The `List` argument contains entities to be extruded. Take a simple example:
 ```cpp
 SetFactory('OpenCASCADE');
 h = 0.1;
@@ -45,31 +44,42 @@ Point(2) = {0.5,0.5,0,h};
 Point(3) = {0,0,0,h};
 Line(1) = {1,2};
 Line(2) = {2,3};
+```
+This code creates a broken line looking like this symbol "<":
+
+TODO:figure
+
+Now this brokent line is extruded by a rotation of 2π around the z-axis:
+```
 Extrude { {0,1,0}, {0,0,0}, 2*Pi}{Line{1,2};}
 ```
-Vous devriez obtenir deux cônes l'un sur l'autre, un peu comme un diamant.
+This results in 2 cones, one on each other, like a diamond:
+
+TODO: figure
 
 
 {{% alert exercise %}}
-Avec cette méthode, dessinez un sapin de Noël comme sur la figure ci-dessous.
+By extruding a single (broken) line, draw a nice Christmas tree as on the figure below. Do not create any cone or box! The key idea is to find the line that can generate the whole geometry.
 
-{{< figure src="../sapin.png" title="Sapin" >}}
+{{< figure src="../sapin.png" title="Christmas tree" >}}
 
 {{% /alert %}}
 
 
 ## Spline
 
-Une spline est une fonction définie par morceaux par des polynômes. Dans GMSH, les `BSpline` sont des `Spline` qui ne passent pas nécessairement par les points de contrôle (notez que les `BSpline` **ne sont pas** disponibles avec le moteur `OpenCASCADE`). La syntaxe des `Spline` et `BSpline` est la suivante
+A spline is a function piecewise polynomial. In GMSH, `BSpline` are `Spline` that do not necessarily cross their control points (please note that `BSpline` **are not yet** available with `OpenCASCADE` engine). Syntax for `Spline` and `BSpline` is the following
 
-- `Spline(indice) = {p1, p2, ..., pN}` : Créer une Spline qui *passe* par les `Point` `p1`,`p2`,...,`pN`
-- `BSpline(indice) = {p1, p2, ..., pN}` : Créer une B-Spline *à l'aide* des points de contrôle `p1`,`p2`,...,`pN`.
+|Syntax|Definition|
+|---|---|
+|`Spline(indice) = {p1, p2, ..., pN}` | Create a spline that goes **through** control `Point` `p1`,`p2`,...,`pN`|
+|`BSpline(indice) = {p1, p2, ..., pN}` | Create a B-spline **thanks to** control `Point` `p1`,`p2`,...,`pN`|
 
 {{% alert warning %}}
-Les `BSpline` **ne sont pas** disponibles avec `OpenCASCADE` !
+Reminder: `BSpline` **are not yet** available with `OpenCASCADE`!
 {{% /alert %}}
 
-Comme toujours, rien de tel qu'un exemple :
+As usual, there is nothing more useful than an example:
 ```cpp
 SetFactory("OpenCASCADE");
 h = 1;
@@ -82,12 +92,23 @@ Point(4) = {15,4,0,h};
 Point(5) = {20,10,0,h};
 Spline(1) = {1,2,3,4,5};
 ```
-Rajoutons en plus de cela l'extrusion pour obtenir un joli vase (ouvert) (maillez en 2D pour voir le résultat):
+This code create a spline:
+TODO: figure
+
+Now, extrude this spline using a 2π rotation around the x-axis
 ```cppp
 Extrude { {1,0,0}, {0,0,0}, 2*Pi} { Line{1} ;}
 ```
-Pour fermer le vase, il faudrait rajouter deux lignes (en haut et en bas) et modifier la commande `Extrude` ainsi :
+And we get a cute open jar. To get a closed one, two lines should be added (on top and on bottom). The whole code would then be:
 ```cpp
+// Spline for the jar
+Point(1) = {0,4,0,h};
+Point(2) = {5,2,0,h};
+Point(3) = {10,8,0,h};
+Point(4) = {15,4,0,h};
+Point(5) = {20,10,0,h};
+Spline(1) = {1,2,3,4,5};
+// Lines to close the jar
 Point(6) = {20,0,0,h};
 Point(7) = {0,0 ,0,h};
 Line(2) = {5,6};
@@ -95,15 +116,17 @@ Line(3) = {7,1};
 Extrude { {1,0,0}, {0,0,0}, 2*Pi} { Line{1,2,3} ;}
 ```
 
-{{% alert tips %}}
-À l'aide de la fenêtre 'Visibility' (`Tools->Visibility`) pour retrouver les numéros des surfaces, construire le `Volume` associé au vase. Pour cela, construire une `Surface Loop` puis le `Volume`.
+{{% alert exercise %}}
+Using the `Visibility` window (`Tools->Visibility`) to get back indices of the surfaces, create the `Volume` associated to the jar. To do, you must add a `Surface Loop` and then the `Volume`.
 {{% /alert %}}
 
 
-{{% alert exercise %}}
-À vous de jouer : représentez une fiole à l'aide des `Spline`, avec ou sans support.
+## Exercise 
 
-{{< figure src="../fiole.png" title="Fiole avec ou sans support" >}}
+{{% alert exercise %}}
+Time to play: draw a flask using `Spline` and `Extrude`, with or without support.
+
+{{< figure src="../fiole.png" title="Flask with or without support" >}}
 
 {{% /alert %}}
 

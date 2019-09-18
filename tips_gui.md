@@ -1,5 +1,5 @@
 +++
-title = "Graphical Interface"
+title = "Graphical User Interface"
 
 date = 2018-09-09T00:00:00
 # lastmod = 2018-09-09T00:00:00
@@ -24,93 +24,91 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 # Add menu entry to sidebar.
 [menu.gmsh]
   parent = "tips&tricks"
-  name = "Graphical Interface"
+  name = "GUI"
   weight = 20
 
 +++
 
-Rappel : GUI = Graphical User Interface (= l'interface graphique).
+{{% alert note %}}
+Reminder: GUI = Graphical User Interface.
+{{% /alert %}}
 
-## Description générale
+## General description
 
-Pour accéder aux options : `Tools->Options` (ou `shift + ctrl + N`). Ce menu est décomposé en catégories :
+Accessing the option is done through the menu `Tools->Options` (or `shift + ctrl + N`). This menu is decomposed into numerous categories:
 
 - `General`
 - `Geometry`
 - `Mesh`
 - `Solver`
 - `Post-Pro`
-- Autant de catégories que de solutions actuellement lues : `View [0]`, `View [1]`, ...
+- Plus eventually the post processing views: `View [0]`, `View [1]`, ...
 
-Dans GMSH, une `View` est une visualisation d'une solution : vous pouvez affichez autant de solutions sur une fenêtre GMSH que vous le souhaitez.
+In GMSH, a `View` corresponds to a function visualized on a mesh.
 
-## Caméra
+## Camera
 
-La caméra se manipule comme pour la visualisation de maillage :
+| Operation| Result|
+| --- | --- |
+| left click| Rotation|
+| right click| Translation|
+| wheel| Zoom|
 
-- Bouton gauche de la souris : rotation de la caméra
-- Bouton droit de la souris : translation de la caméra
-- Molette : zoom/dézoom
-
-Ne pas hésiter à utiliser les boutons `X`, `Y` et `Z` en bas à gauche pour remettre la caméra sur un axe prédéfini
+Please use the bottom buttons `X`, `Y` and `Z` to reset the camera along an axis. The `1:1` button reset the scale (zoom).
 
 {{< figure src="../gui_camera.png" title="Camera">}}
 
-
-{{% alert tips %}}
-En appuyant sur la touche `r` alors GMSH recharge le fichier (reset).
-{{% /alert %}}
-
-
-
 ## Options `General`
 
-Les options `General` sont divisées en plusieurs onglets, notamment :
+They are divided into different tabs.
 
-### `General` (oui, encore)
+### `General` (*yes, again*)
 
-Parmi les options que  pratiques pour nos tutoriels :
+The options that can be usefull for this tutorial are:
 
-- `Use dark interface` : la fenêtre GMSH devient alors moins éblouissante.
-- `Show bounding box` : Affiche les coins (et les coordonnées) de la boite entourant votre géométrie (bounding box)
+- `Use dark interface`: better for our eyes (at least, mine)
+- `Show bounding box`: draw corners (and coordinates) of the bounding box of the geometry
 
 {{% alert tips %}}
-Pour sauvegarder les options pour les instances futures : `File->Save options as default`.
+To save your favorite options for next launch: `File->Save options as default`.
 {{% /alert %}}
 
 ### `Axes`
 
-Vous pouvez ici supprimer le petit axe en bas à droite (pour enregistrer de belles figures, par exemple).
+You can here delete the small axis displayed on bottom right. This is particularly usefull when doing screen shot or saving nice figures.
 
 ### `Color`
 
-Vous pouvez jouer avec la position de la source de lumière (artificielle), en haut à droite.
-Nous pouvons enlever l'effet de lumière, mais cela se situe dans le menu dédié à chaque `View`.
+It's here possible to move the light source (on top right). This lighting effect can also be deleted in the tab of each `View`.
 
 
 ## Options `Geometry`
 
-Citons dans l'onglet `Visibility` la possibilité d'afficher les Normales des surfaces ainsi que la possiblité d'afficher (ou non) les surfaces et les volumes.
+The most usefull option in the tab `Visibility` is to display normal and tangeant vectors of surfaces, and the checkbox to display (or not) surfaces and volumes.
 
 
 ## Options `Mesh`
 
-Parmi toutes les options, citons dans l'onglet `Visibility` la possibilité d'afficher :
+Again, the `Visibility` tab propose to display:
 
-- Les éléments segments, qui **ne sont pas affichés par défaut** et qui peut entraîner parfois une certaine confusion
-- Les faces des éléments : pour les rendre opaques (visiblité)
-- Les Normales et les Tangentes (en bas) :
+- 1D element (segment) which **are not displayed by default**. This can be sometimes  confusing when reading a 1D mesh.
+- The face of the element to make then opaque
+- Normal and Tangent vectors (bottom)
 
-{{< figure src="../gui_normals.jpg" title="Affichage des normales">}}
+{{< figure src="../gui_normals.jpg" title="Displaying normal vectors">}}
 
 
-## Options spécifiques à une `View` (Post-Processing)
+## `View` options (Post-Processing)
 
 {{% alert warning %}}
-Pour ce menu, il faut visualiser une solution éléments finis obtenues, par exemple, avec [GetDP](http://getdp.info) ou [FreeFem++](https://freefem.org)
+Even if GMSH can do vizualisation and post processing, [Paraview](https://paraview.org) is designed for that and is way more powerful.
 {{% /alert %}}
 
-La catégorie qui nous intéresse  est `View[0]`. Celle-ci comporte plusieurs onglets que nous détaillons :
+{{% alert warning %}}
+For this menu to be visible, a finite element function must be opened, coming from example from [GetDP](http://getdp.info) or [FreeFem++](https://freefem.org).
+{{% /alert %}}
+
+The `View[0]` categorie contains different tabs:
 
 - `General`
 - `Axes`
@@ -120,70 +118,74 @@ La catégorie qui nous intéresse  est `View[0]`. Celle-ci comporte plusieurs on
 - `Color`
 - `Map`
 
-Il est possible de sauvegarder les options de visualisations d'une `View` donnée. Cela permet, en rouvrant le fichier avec GMSH, de conserver les différentes options choisies (transfo, etc.). Pour cela : `File->Save Model Option`. Un fichier `.opt` sera sauvegardé à côté de votre fichier `.pos`.
+It's possible to save the option associated to particular `View` using `File->Save Model Option`. A `.opt` file is then created and the next time GMSH open the post-processing file, the chosen options are again loaded (camera position, ...). 
 
 ### `General`
 
-Parmi les options qui vous peuvent vous intéresser ici :
+(Most) Interesting are:
 
-- `Interval type` : surtout **ne choisissez jamais** "numeric values" sinon GMSH va probablement planter (affichage de chaque valeur en chaque noeud !). Par contre, `isovalues` ou `filled isovalues` sont intéressantes. Accessible depuis le menu rapide (double clic).
-- `Range mode`
-  - `Per Time Step` : l'échelle change selon que l'on observe la partie réelle ou imaginaire. Accessible depuis le menu rapide (double clic).
-  - `Custom` : Permet d'effectuer une "coupe" dans les valeurs en limitant l'affichage des valeurs comprises dans un certain intervalle.
-  - `Step` : Dans GMSH, les `Step` sont des pas de temps, mais c'est aussi dedans que sont rangées les parties réelles (`Step 0`) et imaginaire (`Step 1`).
+- `Interval type`: **Never chose "numeric values"**, otherwise GMSH will probably crash due to too many number to display. `isovalues` or `filled isovalues` are really interesting for visualisation.
+- `Range mode`:
+  - `Per Time Step`
+  - `Custom`
+  - `Step` : In GMSH, `Step` are time step, but also real part (`Step 0`) and imaginary part (`Step 1`)
 
 ### Axes
 
-Si vous souhaitez afficher des axes : libre à vous de tester.
+You can try it.
 
 ### Visibility
 
--  L'option `Draw element outlines` permet de superposer (ou non) le maillage.
-- `Time Display` : choisissez `Harmonic Data`, de sorte à afficher "real part" et "imaginary part" après le nom de la `View`.
+-  `Draw element outlines` is used to superimposed (or not) the mesh onto the `View`
+- `Time Display`: for complex time-independent function, select `Harmonic Data` to display "real part" and "imaginary part" in the title of `View` (instead of `Step`)
 
 
 ### Transfo
 
-Nous pouvons ici :
+This is where the `View` (not the function!) can be transformed:
 
-- Transformer (translation, rotation, ...) la solution : il faut changer la matrice (rotation) et le vecteur (translation).
-- `Normal Raise` : Permet d'afficher en 3D une solution 2D.  Accessible depuis le menu rapide (double clic). Exemple dans l'image ci-dessous :
+- Translation, Rotation, ... according to the matrix (rotation) and vector (translation)
+- `Normal Raise`: plot a 2D solution in 3D (example below)
 
-{{< figure src="../gui_normalraise.png" title="Exemple avec NormalRaise">}}
+{{< figure src="../gui_normalraise.png" title="`Normal Raise` example">}}
 
 
 ### Color
 
-Si vous n'aimez pas l'effet de lumière, vous pouvez le désactiver (`Enable lighting`).
+You can here desactivate the lighting effect with `Enable lighting`.
 
 
 ### Color Map
 
-Pour modifier la "color map" : soit à la main (chaud), soit avec des ensembles prédéfinis que vous pouvez sélectionner en tapant 0,1,2,3...,9.
+Some pre-defined colormaps are available by typing 0,1,2,3...,9.
 
 
-## Quelques plugins
+## Some plugins
 
-Ces plugins sont accessibles dans `Tools->Plugins`. Ils permettent de modifier et d'effectuer quelques opérations simples sur les solutions obtenues. Attention, les plugins ne modifient pas les fichiers, pour cela il faudra eregistrer la (nouvelle) solution sur disque.
+These plugins are accessible in `Tools->Plugins` menu. They can modify the data and make some simple operations on them. 
 
-### ModulusPhase}
+{{% alert warning %}}
+Plugins obviously do not modify the content of the file, only the `View`
+{{% /alert %}}
 
-Permet de calculer le module d'une `View`. Attention, la `View` est écrasée.
+### ModulusPhase
 
-Il n'est a priori pas la peine de modifier les options par défaut, sauf éventuellement le numéro de la `View` (-1 signifiant la `View` en cours).
+Compute the modulus and the phase of a `View`. The `View` is here override.
+
+It can be launched with the default parameter as long as the `View` to work on is selected (-1= current `View`).
 
 ### ModifyComponents
 
-Permet d'effectuer une opération mathématique sur les composants de la solution. Comme nous travaillons en scalaire, il n'y a qu'une composante. L'aide associée permet de bien comprendre.
+Compute a mathematical operation on the component (if vector data or tensor data) of the `View`.
 
-## Supprimer une `View`, la recharger, ...
+## Delete a `View` from memory, reload it, ...
 
-- Pour rendre une `View` visible, il faut cocher la case à gauche de son nom.
-- Pour supprimer une `View`, il suffit de cliquer sur la flèche à droite de son nom et de choisir `Remove`. Nous pouvons aussi toutes les supprimer ou juste celles visibles.
-- Pour recharger une `View` (*i.e.*: relire sur disque), soit le raccourci avec la touche `r` soit la flèche à droite de son nom et `Reload`.
+- A `View` can be set to visible or not using the checkbox close to its name
+- Deleting a `View` from the memory: click on the arrow on the right of the name of the view. Then in the dropdown menu select `Remove`. Every `View` can be removed at once, too.
+- Reloading a `View` can be done by typing `r` or in its dropdown menu by selecting `Reload`.
 
 
 
-## Exportation en image (png, jpg, ...)
+## Image exportation (png, jpg, ...)
 
-Pour exporter une image sous GMSH, il suffit de faire `Files->Export`. Soit vous sélectionner dans le menu le format désiré, soit en tapant le nom du fichier de sortie et son extension, GMSH trouvera automatiquement le bon format (png, jpg, ...).
+In the menu, select `Files->Export` and then chose the desired output format, or type the full name of the output file and GMSH will guess its format from the extension you provide (png, jpg, ...).

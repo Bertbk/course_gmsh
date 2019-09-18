@@ -30,26 +30,26 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-## Mailler et sauvegarder sans lancer l'interface graphique (pratique pour des scripts)
+## Mesh and save without the GUI
 
 ```bash
-    gmsh carre.geo -2
+gmsh carre.geo -2
 ```
-On peut définir le fichier de sortie en rajoutant `- NomDuFichier` Pour un maillage 3D, remplacer `-2` par `-3`
+The output file can be set by adding the option `-o NomDuFichier`. To mesh in 3D, replace `-2` by `-3`.
 
-##  Modifier la valeur d'une `Constant`: `-setnumber`
+##  Modifying a value of a `Constant`: `-setnumber`
 
-Par exemple, si l'on veut modifier la valeur de `h` à 10 :
+For example, to change the value of `h` to 10 :
 ```bash
-    gmsh L.geo -2 -setnumber h 10
+gmsh L.geo -2 -setnumber h 10
 ```
-Pour modifier plusieurs valeurs, il faut ajouter l'option `-setnumber` à chaque fois.
+To modify multiple values, the `-setnumber` option must be typed each time
 ```bash
-    gmsh L.geo -2 -setnumber h 10 -setnumber xmax 50
+gmsh L.geo -2 -setnumber h 10 -setnumber xmax 50
 ```
 
-## Rediriger la sortie vers un fichier
+## Log file
 
 ```bash
-    gmsh L.geo -2 $1>NomDuFichier
+gmsh L.geo -2 $1>logfile
 ```
