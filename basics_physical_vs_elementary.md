@@ -35,7 +35,7 @@ To understand more precisely what a `Physical` tag means and how it's useful, we
 
 Let us recall the short program to design a square in GMSH with juste some changes:
 ```
-h = 0.5;                     // Characteristic length of a mesh element
+h = 1;                         // Characteristic length of a mesh element
 Point(1) = {0, 0, 0, h};       // Point construction
 Point(2) = {1, 0, 0, h};
 Point(3) = {1, 1, 0, h};
@@ -48,9 +48,22 @@ Curve Loop(1) = {11,12,13,14}; // A Boundary
 Plane Surface(18) = {1};       // A Surface
 Physical Surface(42) = {18};   // Setting a label to the Surface
 ```
-Meshing this geometry leads to a very simple mesh with only 4 triangles and 5 vertices. Open the `.msh` file (not the `.geo`) and go to `Tools→Visiblity`, then choose `Physical Entities` on the bottom dropdown menu:
+Meshing this geometry leads to a very simple mesh with only 4 triangles and 5 vertices:
 
-TODO: figure
+{{< figure src="../physical_mesh.png" title="Mesh" numbered="true">}}
+
+Open now the `.msh` file (not the `.geo`) and go to `Tools→Visiblity`, then choose `Physical Entities` on the bottom dropdown menu:
+
+{{< figure src="../physical_menu.png" title="`Tools→Visiblity` menu. On the left, `Physical` entites are shown and on the right, `Elementary` entities only." numbered="true">}}
+
+You see that there are only one `Physical` entity (a surface) and several `Elementary` entities. You can select one and click `enter` to display it. For 1D element (segments), you must allows GMSH to show them by checking the box `Tools→Options→Mesh→Visibility→1D elements`. This menu can also be used to display the tag (`Physical` or `Elementary`) directly in the mesh. For example, displaying the `Elementary` tags leads to this figure
+
+{{< figure src="../physical_menu_1D_el.png" title="`Tools→Options→Mesh→Visibility` to select which element types are visible. `Elementary` tags are shown on the mesh." numbered="true">}}
+
+and chosing `Physical` tags to this
+
+{{< figure src="../physical_menu_1D_phys.png" title="Same figure as previously but `Physical` tags are shown on the mesh." numbered="true">}}
+
 
 ## A closer look in the output file
 

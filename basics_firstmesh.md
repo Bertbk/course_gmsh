@@ -190,9 +190,8 @@ The last line of the file`square.geo` is:
 Physical Surface(1)={1};
 ```
 This is particular to GMSH and do not affect the geometry rather than the output mesh file. The command is the same for `Volume`, `Surface`, `Curve` and `Point`:
-
 ```
 Physical Volume/Surface/Line/Point(index) = {entity1, entity2, ..., entityN};
 ```
 
-Basically, GMSH can set a unique identifier (`index`) to a **set of entities** (to regroup them). This new identifier has nothing to do with the previous one you have defined. The output file do not contain the `elementary` index but only the `physical` ones. Moreover, only the entities that have a `physical` tag are saved to the disk! This is [explained in detail later](gmsh_meshformat.md) for that). 
+Basically, GMSH can set a unique identifier (`index`) to a **set of entities** (to regroup them). This new identifier has nothing to do with the previous one you have defined. The output file do not contain the `elementary` index but only the `physical` ones. Moreover, only the entities that have a `physical` tag are saved to the disk! This is [explained in detail later]({{< relref "basics_physical_vs_elementary.md">}}). 
