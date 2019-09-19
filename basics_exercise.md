@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 math=false
-weight = 10
+weight = 30
 diagram = false
 #markup = "mmark"
 
