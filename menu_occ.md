@@ -10,6 +10,8 @@ type = "docs"  # Do not modify.
 
 edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master", submodule_dir="content/course/gmsh/"}
 
+weight = 100
+
 [git]
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
@@ -21,6 +23,6 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   identifier = "occ"
   name = "CAD with OpenCascade"
   url = ""
-  weight = 40
+  weight = 100
 
 +++

@@ -10,7 +10,7 @@ type = "docs"  # Do not modify.
 
 
 math=false
-weight = 40
+weight = 120
 diagram = false
 #markup = "mmark"
 
@@ -26,7 +26,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 [menu.gmsh]
   parent = "occ"
   name = "Geometries & Operations"
-  weight = 15
+  weight = 120
 
 +++
 

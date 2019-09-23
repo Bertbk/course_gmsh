@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 math=false
-weight = 30
+weight = 110
 diagram = false
 #markup = "mmark"
 
@@ -25,7 +25,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 [menu.gmsh]
   parent = "occ"
   name = "A powerful CAD engine"
-  weight = 10
+  weight = 110
 
 +++
 

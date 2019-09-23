@@ -1,5 +1,5 @@
 +++
-title = "Getting Started"
+title = "Tips & Tricks"
 
 date = 2018-09-09T00:00:00
 # lastmod = 2018-09-09T00:00:00
@@ -9,6 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master", submodule_dir="content/course/gmsh/"}
+weight = 200
 
 [git]
   icon = "github"
@@ -21,6 +22,6 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   identifier = "tips&tricks"
   name = "Tips & Tricks"
   url = ""
-  weight = 60
+  weight = 200
 
 +++

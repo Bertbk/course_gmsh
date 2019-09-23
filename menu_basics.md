@@ -10,6 +10,8 @@ type = "docs"  # Do not modify.
 
 edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master", submodule_dir="content/course/gmsh/"}
 
+weight = 10
+
 [git]
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"

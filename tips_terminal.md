@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 math=false
-weight = 70
+weight = 220
 diagram = false
 #markup = "mmark"
 
@@ -26,7 +26,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 [menu.gmsh]
   parent = "tips&tricks"
   name = "Terminal commands"
-  weight = 10
+  weight = 220
 
 +++
 
