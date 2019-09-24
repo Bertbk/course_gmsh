@@ -30,12 +30,25 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
+## Help
+
+```bash
+gmsh --info
+```
+
 ## Mesh and save without the GUI
 
 ```bash
 gmsh carre.geo -2
 ```
-The output file can be set by adding the option `-o NomDuFichier`. To mesh in 3D, replace `-2` by `-3`.
+The output file can be set by adding the option `-o FileName`. To mesh in 3D, replace `-2` by `-3`.
+
+## Multi-Threading
+
+If GMSH is compiled with OpenMP then mesh can be generated in parallel using `NUM_THREADS` threads:
+```
+gmsh file.geo -nt NUM_THREADS [...]
+```
 
 ##  Modifying a value of a `Constant`: `-setnumber`
 
