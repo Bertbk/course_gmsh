@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 math = true
-weight = 1
+weight = 5
 diagram = false
 #markup = "mmark"
 
@@ -42,7 +42,7 @@ There exists multiple open-source text editors such as the old-but-gold [Emacs](
 If you do not know which one to chose and even though Emacs and VIM are extremely powerful, I strongly **suggest you to pick up VSCode** because of its **fast learning curve** and the **numerous extension packages**. In short, you can have a powerful and efficient working environment in less than an hour.
 
 
-### Syntax highlighting
+### Syntax highlighting 
 
 GMSH has its own parser and language, even though using the API is generally a better option (see below). If you want to work with `.geo` files (GMSH files), you might be interest in automatic indent and syntax highlighting:
 
