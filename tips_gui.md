@@ -56,7 +56,7 @@ In GMSH, a `View` corresponds to a function visualized on a mesh.
 
 Please use the bottom buttons `X`, `Y` and `Z` to reset the camera along an axis. The `1:1` button reset the scale (zoom).
 
-{{< figure src="../gui_camera.png" title="Camera">}}
+{{< figure src="../gui_camera.png" title="Camera" numbered="true">}}
 
 ## Options `General`
 

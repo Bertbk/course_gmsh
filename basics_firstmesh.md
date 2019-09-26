@@ -51,10 +51,10 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 3. A square should have appear in GMSH's windows. The camera can be adjusted using the mouse: rotating (`left click`), translating (`right click`) or zooming (`wheel`). At bottom left of GMSH's windows, camera can be reseted using `X,Y,Z` and `1:1` (scale) buttons.
 4. The square can now be meshed by typing `2` on the keyboard (or maybe `shift` + `2`) or using the menu: `Mesh->2D`
 
-TODO: figure des boutons
 
-TODO: figure du maillage du carré
+{{< figure src="../basics-firstmesh-square.png" title="Mesh of a square" numbered="true">}}
 
+{{< figure src="../gui_camera.png" title="Menu and Camera" numbered="true">}}
 
 ### Log
 

@@ -56,10 +56,9 @@ Plane Surface(1) = {1};     // Surface
 Physical Surface(1) = {1};  // Physical Tag
 ```
 
-GMSH should display a disk and a menu on the left with 2 parameters that can be modified on runtime :
+GMSH should display a circle and a menu on the left with 2 parameters that can be modified on runtime :
 
-TODO: figure
-
+{{< figure src="../basics-advance-menu.png" title="Parameters can be modified on the left menu" numbered="true">}}
 
 What is defined in `DefineConstant` is explained in the [section dedicated to the GUI (Graphical User Interface)]({{<relref "/tips_interactive.md">}}) but basically, these lines add parameters that can be modified by the user in the GUI.
 

@@ -130,12 +130,14 @@ Line{2,3,6}; Surface{42:50}; Volume{11,15};
 There is nothing better as an example to understand a tool. Let's build a 6-faces dice in a `dice.geo` file (copy/paste the following code):
 ```cpp
 SetFactory('OpenCASCADE');
+Mesh.CharacteristicLengthMax = 0.1;
+Mesh.CharacteristicLengthMin = 0.1;
 Box(1) = {-0.5,-0.5,-0.5, 1, 1, 1};
 Sphere(2) = {0,0,0, 0.65};
 BooleanIntersection{ Volume{1}; Delete;}{ Volume{2}; Delete;}
 ```
 
-TODO: image
+{{< figure src="../occ-dice.png" title="Dice" numbered="true">}}
 
 ### Analyse of the code
 
