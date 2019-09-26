@@ -49,12 +49,12 @@ Physical Surface(1) = {1};
 
 Parameters `lx` and `ly` will now be mutable in the GUI thanks to the command `DefineNumber`:
 ```c++
-DefineNumber[Var  = { DefautValue, ... options ...} ;
+DefineNumber[Var  = { DefautValue, ... options ...}] ;
 ```
 To understand it better, change the lines defining `lx` and `ly` by:
 ```c++
-lx = DefineNumber[2, Min 0.5, Max 10, Step 0.1, Name "Geometry/Lx"];
-ly = DefineNumber[1, Min 0.5, Max 10, Step 0.1, Name "Geometry/Ly"];
+DefineNumber[lx = {2, Min 0.5, Max 10, Step 0.1, Name "Geometry/Lx"}];
+DefineNumber[ly = {1, Min 0.5, Max 10, Step 0.1, Name "Geometry/Ly"}];
 ```
 Reload the file using `GMSH` and your screen should looks like the figure below. On your left, you are now able to modify the value of `lx` and `ly` interactively (without reloading).
 
