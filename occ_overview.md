@@ -13,12 +13,12 @@ weight = 110
 diagram = false
 #markup = "mmark"
 
-edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master", submodule_dir="content/course/gmsh/"}
+edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master", submodule_dir="tutorial/gmsh/"}
 
 [git]
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
-  submodule_dir = "content/course/gmsh/"
+  submodule_dir = "tutorial/gmsh/"
   
 
 # Add menu entry to sidebar.
