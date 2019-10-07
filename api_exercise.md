@@ -22,7 +22,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   
 # Add menu entry to sidebar.
 [menu.gmsh]
-  parent = "API"
+  parent = "V. API"
   identifier="api_exercise"
   name = "Exercise"
   weight = 330

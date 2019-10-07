@@ -23,7 +23,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 # Add menu entry to sidebar.
 [menu.gmsh]
-  parent = "occ"
+  parent = "III. CAD with OpenCascade"
   name = "A powerful CAD engine"
   weight = 110
 

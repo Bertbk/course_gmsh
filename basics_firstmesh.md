@@ -22,7 +22,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   
 # Add menu entry to sidebar.
 [menu.gmsh]
-  parent = "basics"
+  parent = "II. Basic Usage"
   name = "First mesh"
   weight = 1
 

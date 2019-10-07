@@ -22,7 +22,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   
 # Add menu entry to sidebar.
 [menu.gmsh]
-  parent = "API"
+  parent = "V. API"
   identifier="api_first_mesh"
   name = "Access the mesh elements"
   weight = 320
@@ -33,7 +33,7 @@ Every function available in the API is well documented in `gmsh.py`. Here some o
 {{% /alert %}}
 
 {{% alert note %}}
-I also remind you that in VSCode (+ Python extension), the definition of the function [are displayed in the text editor]({{<relref "intro_help.md#extensions">}}): extremly convenient!
+I also remind you that in VSCode (+ Python extension), the definition of the function [are displayed in the text editor]({{<relref "intro-help.md#extensions">}}): extremly convenient!
 {{% /alert %}}
 
 
