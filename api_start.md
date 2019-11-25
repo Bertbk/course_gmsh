@@ -106,6 +106,10 @@ should open a GMSH window with a meshed disk
 {{< figure src="../api_first_mesh.png" title="First mesh using GMSH API" numbered="true" >}}
 
 
+{{% alert exercise %}}
+Using Python API, rebuild the ["L-shape" geometry]({{< relref "basics_firstmesh.md#line-and-curve-loop-entities">}}).
+{{% /alert %}}
+
 ## OpenCASCADE CAD Engine
 
 Let us redo the [CAD example]({{<relref "occ_overview.md#a-short-example">}}) using the Python API. This example can also be [downloaded from the source code of GMSH](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/api/boolean.py):
@@ -147,3 +151,7 @@ gmsh.write("boolean.msh")
 
 gmsh.finalize() 
 ```
+
+{{% alert exercise %}}
+Using Python API, rebuild [one of the geometry proposed previously]({{< relref "occ_basics.md#training-examples">}}).
+{{% /alert %}}

@@ -29,7 +29,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 {{% alert note %}}
-Every function available in the API is well documented in `gmsh.py`. Here some of these functions are detailed with some examples. Actually, definition shown here are (truncated) copy/paste from the official documentation.
+Every function available in the API is well documented in [the file `gmsh.py`](https://gitlab.onelab.info/gmsh/gmsh/blob/master/api/gmsh.py). Here some of these functions are detailed with some examples. Actually, definition shown here are (truncated) copy/paste from the official documentation.
 {{% /alert %}}
 
 {{% alert note %}}
@@ -100,7 +100,7 @@ Methods to get and modify mesh element are placed in the `gmsh.model.mesh` names
 
 ### Example
 
-Start from [the code meshing a square]({{<relref "#reference-problem">}} that has been given above and override these line
+Start from [the code meshing a square]({{<relref "#reference-problem.md">}}) that has been given above and override these line
 ```python
 # ==============
 # Some portions of code will be added here !
