@@ -58,7 +58,7 @@ Physical Surface(1) = {1};  // Physical Tag
 
 GMSH should display a circle and a menu on the left with 2 parameters that can be modified on runtime :
 
-{{< figure src="../basics-advance-menu.png" title="Parameters can be modified on the left menu" numbered="true">}}
+{{< figure src="../img/basics-advance-menu.png" title="Parameters can be modified on the left menu" numbered="true">}}
 
 What is defined in `DefineConstant` is explained in the [section dedicated to the GUI (Graphical User Interface)]({{<relref "/tips_interactive.md">}}) but basically, these lines add parameters that can be modified by the user in the GUI.
 
@@ -109,4 +109,4 @@ Time to play:
 
 The square of width 10 (`{ Surface{1};}`) is extruded (`Extrude`) in the z-direction with length `10` (`{0, 0, 10}`). Applying this code in GMSH gives the following figure:
 
-{{< figure src="../cube.png" title="Mesh of the cube" width="300"  numbered="true">}}
+{{< figure src="../img/cube.png" title="Mesh of the cube" width="300"  numbered="true">}}

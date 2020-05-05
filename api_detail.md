@@ -80,7 +80,7 @@ python square.py
 gmsh square.msh
 ```
 
-{{<figure src="../msh-square.png" title="Meshed square" numbered="true">}}
+{{<figure src="../img/msh-square.png" title="Meshed square" numbered="true">}}
 
 
 ## Nodes

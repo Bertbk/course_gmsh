@@ -55,7 +55,7 @@ cd folder/of/gmsh/bin
 
 Apart from (maybe) the color theme, a new window should have been launched and looks like this
 
-{{< figure src="../gmsh_splash.png" title="GMSH splash screen. GMSH's version is displayed at the bottom of the window (here 4.5.0)" numbered="true" >}}
+{{< figure src="img/gmsh_splash.png" title="GMSH splash screen. GMSH's version is displayed at the bottom of the window (here 4.5.0)" numbered="true" >}}
 
 ### Add `gmsh` to your `$PATH`
 

@@ -59,7 +59,7 @@ DefineNumber[ly = {1, Min 0.5, Max 10, Step 0.1, Name "Geometry/Ly"}];
 Reload the file using `GMSH` and your screen should looks like the figure below. On your left, you are now able to modify the value of `lx` and `ly` interactively (without reloading).
 
 
-{{< figure src="../gui_interactive.png" title="GUI is now interactive with your script">}}
+{{< figure src="../img/gui_interactive.png" title="GUI is now interactive with your script">}}
 
 
 {{% alert note %}}

@@ -52,9 +52,9 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 4. The square can now be meshed by typing `2` on the keyboard (or maybe `shift` + `2`) or using the menu: `Mesh->2D`
 
 
-{{< figure src="../basics-firstmesh-square.png" title="Mesh of a square" numbered="true">}}
+{{< figure src="../img/basics-firstmesh-square.png" title="Mesh of a square" numbered="true">}}
 
-{{< figure src="../gui_camera.png" title="Menu and Camera" numbered="true">}}
+{{< figure src="../img/gui_camera.png" title="Menu and Camera" numbered="true">}}
 
 ### Log
 
@@ -159,7 +159,7 @@ Where:
 
 {{% alert exercise %}}
 Let's do a "L-shape" geometry in a new file `L.geo` as proposed in the below figure (Set a **mesh refinement** to `h`=1). You can copy/paste the previous `square.geo` file to help yourself.
-{{< figure src="../L.svg" title="L Shape geometry (with `h`=1 !)"  numbered="true">}}
+{{< figure src="../img/L.svg" title="L Shape geometry (with `h`=1 !)"  numbered="true">}}
 
 {{% /alert %}}
 
@@ -178,7 +178,7 @@ Plane Surface(index) = {CurveLoop1, CurveLoop2, ..., CurveLoopN};
 {{% alert exercise %}}
 Modify the "L-shape" geometry to add a hole inside as on the below figure. You will have to add `Point` and `Line` obvsiouly, but also a new `Curved Loop`. The `Surface` must then be defined by the 2 loops!
 
-{{< figure src="../L_hole.svg" title="L-Shape avec un trou carré" numbered="true">}}
+{{< figure src="../img/L_hole.svg" title="L-Shape avec un trou carré" numbered="true">}}
 
 {{% /alert %}}
 

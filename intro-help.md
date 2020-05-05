@@ -66,11 +66,11 @@ I suggest you to install the following extensions, available on [the market](htt
 
 The first two are clearly useful for these tutorial and will provide numerous facilities. For example, working with the GMSH language (`.geo` file) would give you syntax coloration and automatic indent
 
-![VSCode syntax coloration for GMSH](../vscode_gmsh.gif)
+![VSCode syntax coloration for GMSH](../img/vscode_gmsh.gif)
 
 While working in Python with the API will provides you coloration, indent, suggestion and even help!
 
-![VSCode syntax coloration for GMSH](../vscode_api.gif)
+![VSCode syntax coloration for GMSH](../img/vscode_api.gif)
 
 #### Terminal inside VSCode
 

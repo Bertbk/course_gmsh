@@ -137,7 +137,7 @@ Sphere(2) = {0,0,0, 0.65};
 BooleanIntersection{ Volume{1}; Delete;}{ Volume{2}; Delete;}
 ```
 
-{{< figure src="../occ-dice.png" title="Dice" numbered="true">}}
+{{< figure src="../img/occ-dice.png" title="Dice" numbered="true">}}
 
 ### Analyse of the code
 
@@ -168,7 +168,7 @@ Draw this head with a conical hat as in the following figure. Be sure that, in t
 
 To help you design this nice geometry: the sphere is centered at (0,0,0) with a radius equal to 1 while the cone is of parameter (0, 0, 0.5, 0, 0, 1, 1.5, 0).
 
-{{< figure src="../bonhomme.png" title="Head with a conical hat" width="300" >}}
+{{< figure src="../img/bonhomme.png" title="Head with a conical hat" width="300" >}}
 
 {{% /alert %}}
 
@@ -193,7 +193,7 @@ Mesh 2; // Force GMSH to mesh
 
 Opening this file in GMSH is a deceiving experience: there are 2 meshes and they are overlapping each other!
 
-{{< figure src="../fragments_before.png" title="Without `BooleanFragments`: overlapping meshes">}}
+{{< figure src="../img/fragments_before.png" title="Without `BooleanFragments`: overlapping meshes">}}
 
 Let us now add the fragmentation:
 ```c++
@@ -207,7 +207,7 @@ Mesh 2; // Force GMSH to mesh
 ```
 Three entities are created (instead of only one) but there is only one (connected) mesh and no dupplicated boundaries. The three `Surface` can be regrouped lated into a single `Physical Tag` so this is absolutely not a problem.
 
-{{< figure src="../fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
+{{< figure src="../img/fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
 
 
 {{% alert note %}}
@@ -224,12 +224,12 @@ Rotate{{x,y,z}, {xp,yp,zp}, a}{List}
 ```
 where (`x`,`y`,`z`) is a vector on the rotation axis, (`xp`,`yp`,`zp`) a point on the axis and `a` the angle of rotation (in rad). The `List` argument contains the entities to be modified (`Line`, `Surface` and `Volume`). The quantity π in GMSH is given by the hard coded command `Pi`.
 
-{{< figure src="../tasse.png" title="Mug" width="300" >}}
+{{< figure src="../img/tasse.png" title="Mug" width="300" >}}
 
 {{% /alert %}}
 
 {{% alert exercise %}}
 Try and reproduce the following geometry
 
-{{< figure src="../ecrou.png" title="Mecanichal piece" >}}
+{{< figure src="../img/ecrou.png" title="Mecanichal piece" >}}
 {{% /alert %}}

@@ -39,4 +39,4 @@ Using GMSH API, build a code that:
 
 This program can obviously be done without GMSH (and way faster without!). It's just a toy program!
 
-{{< figure src="../api-exercice-1d.png" title="Result" numbered="true">}}
+{{< figure src="../img/api-exercice-1d.png" title="Result" numbered="true">}}

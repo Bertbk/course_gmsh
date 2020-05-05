@@ -103,7 +103,7 @@ python mycircle.py
 ```
 should open a GMSH window with a meshed disk
 
-{{< figure src="../api_first_mesh.png" title="First mesh using GMSH API" numbered="true" >}}
+{{< figure src="../img/api_first_mesh.png" title="First mesh using GMSH API" numbered="true" >}}
 
 
 {{% alert exercise %}}

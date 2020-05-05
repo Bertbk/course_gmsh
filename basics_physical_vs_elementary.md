@@ -50,19 +50,19 @@ Physical Surface(42) = {18};   // Setting a label to the Surface
 ```
 Meshing this geometry leads to a very simple mesh with only 4 triangles and 5 vertices:
 
-{{< figure src="../physical_mesh.png" title="Mesh" numbered="true">}}
+{{< figure src="../img/physical_mesh.png" title="Mesh" numbered="true">}}
 
 Open now the `.msh` file (not the `.geo`) and go to `Tools→Visiblity`, then choose `Physical Entities` on the bottom dropdown menu:
 
-{{< figure src="../physical_menu.png" title="`Tools→Visiblity` menu. On the left, `Physical` entites are shown and on the right, `Elementary` entities only." numbered="true">}}
+{{< figure src="../img/physical_menu.png" title="`Tools→Visiblity` menu. On the left, `Physical` entites are shown and on the right, `Elementary` entities only." numbered="true">}}
 
 You see that there are only one `Physical` entity (a surface) and several `Elementary` entities. You can select one and click `enter` to display it. For 1D element (segments), you must allows GMSH to show them by checking the box `Tools→Options→Mesh→Visibility→1D elements`. This menu can also be used to display the tag (`Physical` or `Elementary`) directly in the mesh. For example, displaying the `Elementary` tags leads to this figure
 
-{{< figure src="../physical_menu_1D_el.png" title="`Tools→Options→Mesh→Visibility` to select which element types are visible. `Elementary` tags are shown on the mesh." numbered="true">}}
+{{< figure src="../img/physical_menu_1D_el.png" title="`Tools→Options→Mesh→Visibility` to select which element types are visible. `Elementary` tags are shown on the mesh." numbered="true">}}
 
 and chosing `Physical` tags to this
 
-{{< figure src="../physical_menu_1D_phys.png" title="Same figure as previously but `Physical` tags are shown on the mesh." numbered="true">}}
+{{< figure src="../img/physical_menu_1D_phys.png" title="Same figure as previously but `Physical` tags are shown on the mesh." numbered="true">}}
 
 
 ## A closer look in the output file
