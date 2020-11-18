@@ -188,14 +188,14 @@ $EndElements
 2. ... But **only the mesh elements** (line, triangle, ...) belonging to an elementary entity with a `Physical` tag will be saved!
 3. If **no `Physical` entity** is defined then **everything is saved** (which is probably too much!)
 
-{{% alert warning %}}
+{{% callout warning %}}
 If you need boundary elements, for example to apply on it a boundary condition (Neumann, Dirichlet, ...) then you need to set a `Physical Tag` on these boundaries. Otherwise, the boundary elements will not exist!
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert tips %}}
+{{% callout tips %}}
 It's generally a good idea to set some `Physical` tags to keep control on the output result. It's also recommended to define the `Physical Entities` **at the end of the `.geo` file only**: OpenCascade might delete or change the numbering of elementary entities!
-{{% /alert %}}
+{{% /callout %}}
 
 ## Other file format
 

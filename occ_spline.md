@@ -57,12 +57,12 @@ This results in 2 cones, one on each other, like a diamond:
 
 {{< figure src="../img/occ-diamond.png" title="Extruded broken line and meshed (2D)" numbered="true" >}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 By extruding a single (broken) line, draw a nice Christmas tree as on the figure below. Do not create any cone or box! The key idea is to find the line that can generate the whole geometry.
 
 {{< figure src="../img/sapin.png" title="Christmas tree" >}}
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Spline
@@ -74,9 +74,9 @@ A spline is a function piecewise polynomial. In GMSH, `BSpline` are `Spline` tha
 |`Spline(indice) = {p1, p2, ..., pN}` | Create a spline that goes **through** control `Point` `p1`,`p2`,...,`pN`|
 |`BSpline(indice) = {p1, p2, ..., pN}` | Create a B-spline **thanks to** control `Point` `p1`,`p2`,...,`pN`|
 
-{{% alert warning %}}
+{{% callout warning %}}
 Reminder: `BSpline` **are not yet** available with `OpenCASCADE`!
-{{% /alert %}}
+{{% /callout %}}
 
 As usual, there is nothing more useful than an example:
 ```cpp
@@ -122,17 +122,17 @@ Extrude { {1,0,0}, {0,0,0}, 2*Pi} { Line{1,2,3} ;}
 
 {{< figure src="../img/occ-jar.png" title="Extruded spline resuling in a jar" numbered="true" >}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Using the `Visibility` window (`Tools->Visibility`) to get back indices of the surfaces, create the `Volume` associated to the jar. To do, you must add a `Surface Loop` and then the `Volume`.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Exercise 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Time to play: draw a flask using `Spline` and `Extrude`, with or without support.
 
 {{< figure src="../img/fiole.png" title="Flask with or without support" >}}
 
-{{% /alert %}}
+{{% /callout %}}
 

@@ -28,9 +28,9 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-{{% alert note %}}
+{{% callout note %}}
 Only few of the possibilities are shown here. Please have a look at [the official documentation](http://gmsh.info/doc/texinfo/gmsh.html) for every other operations.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Circular curve
 
@@ -68,16 +68,16 @@ Circle(index) = {PointA, PointCenter, PointB};
 ```
 Note that drawing a circle needs 3 points at minimum (instead of 4).
 
-{{% alert warning %}}
+{{% callout warning %}}
 `Circle` can not draw arc with angle **equal** or **greater** than π.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert note %}}
+{{% callout note %}}
 `Circle` and `Line` share the **same index counter**: a `Line` and a `Circle` cannot share the same index!
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Time to play:
 
 1. Introduce a circle of center point (0,0) and of radius `Rint` [that can be modified in the GUI]({{< relref "tips_interactive.md">}}), with minimum value 0.1,  maximum value 0.4 and a `Step` of 0.1. You can copy/paste the line where `R` is defined and modify it accordingly.
@@ -85,7 +85,7 @@ Time to play:
 
 ![Homer eating a Donut](../donut.gif)
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## `Extrude`: from a square to a cube

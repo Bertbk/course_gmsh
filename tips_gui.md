@@ -29,9 +29,9 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-{{% alert note %}}
+{{% callout note %}}
 Reminder: GUI = Graphical User Interface.
-{{% /alert %}}
+{{% /callout %}}
 
 ## General description
 
@@ -69,9 +69,9 @@ The options that can be usefull for this tutorial are:
 - `Use dark interface`: better for our eyes (at least, mine)
 - `Show bounding box`: draw corners (and coordinates) of the bounding box of the geometry
 
-{{% alert tips %}}
+{{% callout tips %}}
 To save your favorite options for next launch: `File->Save options as default`.
-{{% /alert %}}
+{{% /callout %}}
 
 ### `Axes`
 
@@ -100,13 +100,13 @@ Again, the `Visibility` tab propose to display:
 
 ## `View` options (Post-Processing)
 
-{{% alert warning %}}
+{{% callout warning %}}
 Even if GMSH can do vizualisation and post processing, [Paraview](https://paraview.org) is designed for that and is way more powerful.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert warning %}}
+{{% callout warning %}}
 For this menu to be visible, a finite element function must be opened, coming from example from [GetDP](http://getdp.info) or [FreeFem++](https://freefem.org).
-{{% /alert %}}
+{{% /callout %}}
 
 The `View[0]` categorie contains different tabs:
 
@@ -164,9 +164,9 @@ Some pre-defined colormaps are available by typing 0,1,2,3...,9.
 
 These plugins are accessible in `Tools->Plugins` menu. They can modify the data and make some simple operations on them. 
 
-{{% alert warning %}}
+{{% callout warning %}}
 Plugins obviously do not modify the content of the file, only the `View`
-{{% /alert %}}
+{{% /callout %}}
 
 ### ModulusPhase
 

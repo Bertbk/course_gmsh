@@ -28,13 +28,13 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   weight = 320
 
 +++
-{{% alert note %}}
+{{% callout note %}}
 Every function available in the API is well documented in [the file `gmsh.py`](https://gitlab.onelab.info/gmsh/gmsh/blob/master/api/gmsh.py). Here some of these functions are detailed with some examples. Actually, definition shown here are (truncated) copy/paste from the official documentation.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert note %}}
+{{% callout note %}}
 I also remind you that in VSCode (+ Python extension), the definition of the function [are displayed in the text editor]({{<relref "intro-help.md#extensions">}}): extremly convenient!
-{{% /alert %}}
+{{% /callout %}}
 
 
 Now that you know how to generate a mesh with GMSH API, you probably wants to *play* with the resulting mesh. For example, if you want to program a finite element solver, you probably needs to access each elements and nodes of the mesh and compute some quantity on it. In this section, you will learn the basic functionality to do that withing Python. For Julia and C++, the syntax changes but the idea is the same.
@@ -86,9 +86,9 @@ gmsh square.msh
 ## Nodes
 
 
-{{% alert note %}}
+{{% callout note %}}
 Methods to get and modify mesh element are placed in the `gmsh.model.mesh` namespace. For example, to call `getNode(12)`, you should type `gmsh.model.mesh.getNode(12)`.
-{{% /alert %}}
+{{% /callout %}}
 ### Basics
 
 | Name                      | Definition / Remark |

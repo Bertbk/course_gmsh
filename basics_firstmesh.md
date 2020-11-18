@@ -79,14 +79,14 @@ Info    : 142 vertices 286 elements
 This shows that GMSH starts by meshing the four lines (`Meshing 1D...`) then the surface. In this example, 142 vertices have been created for a total of 286 elements (lines and triangles).
 
 
-{{% alert note %}}
+{{% callout note %}}
 Mesh can be saved using `CTRL + Shift + s` or using graphical interface (`file->save mesh`). By default, the extension of the mesh is `.msh` and of the same root as the `.geo` file (*i.e.* `square.geo` leads to `square.msh`).
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert note %}}
+{{% callout note %}}
 [GUI is detailed in a next section]({{< relref "/tips_gui.md">}}).
-{{% /alert %}}
+{{% /callout %}}
 
 ## Code analyse
 
@@ -95,16 +95,16 @@ Mesh can be saved using `CTRL + Shift + s` or using graphical interface (`file->
 On the first line of our code is defined a variable, `h`, which is the characteristic length of the elements.
 This size is precised at each `Point` elementary entity.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Let us play with it (check the tips bellow first):
 
 1. Modify the parameter `h`, remesh and observe the result
 2. Anisotropic mesh: change only the mesh size of `Point(2)`, for example with `h/10`. Remesh and observe the result
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert tips %}}
+{{% callout tips %}}
 When the file has been modified, there is no need to relaunch GMSH: simply press `0` (zero) (or maybe `shift` + `0`). This forces GMSH to reset and re-read the current file.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ### `Point` entity
@@ -121,12 +121,12 @@ where the parameters are:
 - `h`: mesh element size around the `Point`
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Apply the following change to `square.geo`:
 
 1. Move some `Point` to obtain a rectangle (instead of a square)
 2. Move some `Point` to get a quadrangle not rectangular at all
-{{% /alert %}}
+{{% /callout %}}
 
 
 ### `Line` and `Curve Loop` entities
@@ -143,9 +143,9 @@ Avec comme paramètres :
 - `PointA`: index of the starting `Point`
 - `PointB`: index of the ending `Point`
 
-{{% alert warning %}}
+{{% callout warning %}}
 A `Line` is oriented!
-{{% /alert %}}
+{{% /callout %}}
 
 #### `Curve Loop`
 
@@ -157,11 +157,11 @@ Where:
 - `index`: Unique identifier (`int` > 0) of the `Curve Loop` (`newll` can be used)
 - `CurveX`: index of the X<sup>th</sup> `Curve` (or `Line`). If this quantity is negative (*e.g.* -10) then the `Curve` is oriented backwardly.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Let's do a "L-shape" geometry in a new file `L.geo` as proposed in the below figure (Set a **mesh refinement** to `h`=1). You can copy/paste the previous `square.geo` file to help yourself.
 {{< figure src="../img/L.svg" title="L Shape geometry (with `h`=1 !)"  numbered="true">}}
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 
@@ -175,12 +175,12 @@ Plane Surface(index) = {CurveLoop1, CurveLoop2, ..., CurveLoopN};
 - `index`: Unique identifier (`int` > 0) of the `Surface` (`news` can be used)
 - `CurveLoopX`: index of the X<sup>th</sup> `Curve Loop`. As for the `Line`, this quantity can be negative (*e.g.* -10) to backwardly orient a `Curve Loop`.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Modify the "L-shape" geometry to add a hole inside as on the below figure. You will have to add `Point` and `Line` obvsiouly, but also a new `Curved Loop`. The `Surface` must then be defined by the 2 loops!
 
 {{< figure src="../img/L_hole.svg" title="L-Shape avec un trou carré" numbered="true">}}
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ### `Elementary Entities` vs. `Physical Entities`

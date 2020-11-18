@@ -49,9 +49,9 @@ It's however **highly** recommended to use this CAD engine instead of the native
 
 ## A short example
 
-{{% alert note %}}
+{{% callout note %}}
 Numerous example using boolean operations can be found in the [`demos/boolean` folder in the source code of GMSH](https://gitlab.onelab.info/gmsh/gmsh/tree/master/demos/boolean).
-{{% /alert %}}
+{{% /callout %}}
 
 An example of CAD object is provided on [the dediacted wikipedia page](http://en.wikipedia.org/wiki/Constructive_solid_geometry):
 
@@ -87,6 +87,6 @@ BooleanUnion(7) = { Volume{4}; Delete; }{ Volume{5,6}; Delete; };
 BooleanDifference(8) = { Volume{3}; Delete; }{ Volume{7}; Delete; };
 ```
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Try it! Mesh in 2D and you should see the wanted geometry.
-{{% /alert %}}
+{{% /callout %}}

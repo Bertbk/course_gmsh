@@ -62,13 +62,13 @@ Reload the file using `GMSH` and your screen should looks like the figure below.
 {{< figure src="../img/gui_interactive.png" title="GUI is now interactive with your script">}}
 
 
-{{% alert note %}}
+{{% callout note %}}
 [Numerous customisation parameters are available!](https://gitlab.onelab.info/doc/tutorials/wikis/ONELAB-syntax-for-Gmsh-and-GetDP)
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Make `h` editable in the GUI with a `Step` of 0.1 and such that 0.1 < `h` < 1.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## `DefineConstant`

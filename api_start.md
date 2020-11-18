@@ -28,13 +28,13 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
 
 +++
 
-{{% alert note %}}
+{{% callout note %}}
 Be sure to have installed the SDK or have compiled GMSH using the `ENABLE_LIB` options. See [the first section of this course for more information]({{<relref "_index.md#api">}}).
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert note %}}
+{{% callout note %}}
 This section assumes that you are familiar with GMSH inner languages and Python. 
-{{% /alert %}}
+{{% /callout %}}
 
 ## (Important) Remarks
 
@@ -106,9 +106,9 @@ should open a GMSH window with a meshed disk
 {{< figure src="../img/api_first_mesh.png" title="First mesh using GMSH API" numbered="true" >}}
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Using Python API, rebuild the ["L-shape" geometry]({{< relref "basics_firstmesh.md#line-and-curve-loop-entities">}}).
-{{% /alert %}}
+{{% /callout %}}
 
 ## OpenCASCADE CAD Engine
 
@@ -152,6 +152,6 @@ gmsh.write("boolean.msh")
 gmsh.finalize() 
 ```
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Using Python API, rebuild [one of the geometry proposed previously]({{< relref "occ_basics.md#training-examples">}}).
-{{% /alert %}}
+{{% /callout %}}

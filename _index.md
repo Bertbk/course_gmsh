@@ -36,9 +36,9 @@ GMSH is an open-source software for 2D/3D mesh and data visualization, developpe
 
 ## Install (without being root!)
 
-{{% alert warning %}}
+{{% callout warning %}}
 Linux user: please **do not install GMSH via package manager** (`apt-get`, ...): version is outdated.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ### From scratch (advanced users)
@@ -59,9 +59,9 @@ Apart from (maybe) the color theme, a new window should have been launched and l
 
 ### Add `gmsh` to your `$PATH`
 
-{{% alert warning %}}
+{{% callout warning %}}
 **Never copy a binary file** in `usr/bin`. This folder is reserved to your package manager.
-{{% /alert %}}
+{{% /callout %}}
 
 For Linux (and Mac) users, it might be convenient to be able to launch GMSH in a terminal and from whichever folder. To do that, simply add to the `$PATH` environment variable, the path to `gmsh`'s folder. This can be automated by adding a line in `$HOME/.bash_profile` (or `$HOME/.profile` or ...)
 ```bash
@@ -95,7 +95,7 @@ export PATH=$PATH:$HOME/install/bin
 ```
 Every time I add a new file to `$HOME/install/bin` it becomes accessible, without having to change the environment variable.
 
-{{% alert note %}}
+{{% callout note %}}
 Actually I have three main folders
 
 - `$HOME/src` : Source codes
@@ -103,14 +103,14 @@ Actually I have three main folders
 - `$HOME/install` : Installed software that I either compiled or downloaded
 
 This way, source code, build process and installed file are well separated.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## API
 
-{{% alert note %}}
+{{% callout note %}}
 Part of the tutorial is written in GMSH's language but using the API instead is direct and **highly recommended**.
-{{% /alert %}}
+{{% /callout %}}
 
 GMSH provides a powerful API compatible with [Python](https://www.python.org/), [Julia](https://julialang.org/) or `C++`.  The [GMSH SDK](http://gmsh.info/)[^1] is available online and easy to install. 
 
@@ -146,9 +146,9 @@ A relaunch of the terminal might be necessary to take these changes into account
 import gmsh
 ```
 
-{{% alert warning %}}
+{{% callout warning %}}
 The binary file `bin/gmsh` contained in the SDK's zip file might not work as a standalone binary file. Please download and use the binary provided by GMSH's website for that use.
-{{% /alert %}}
+{{% /callout %}}
 
 
 [^1]: Software Development Toolkit

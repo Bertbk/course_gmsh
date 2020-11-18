@@ -64,17 +64,17 @@ where
 - `x`,`y`,`z`: cartesian coordinates of the "bottom left" point
 - `lx`,`ly`,`lz`: size in the (resp.) x-,y- and z- direction of the box
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Time to play!
 
 1. Build a box with `lx` = 1, `ly` = 0.5 and `lz` = 0.75
 2. Mesh in 2D
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert note %}}
+{{% callout note %}}
 Using the GUI, you can check the orientation of the [normal vector on the surface]({{< relref "tips_gui.md#options-mesh" >}}): `Tools→Option→Mesh` then select a value (*e.g* 50) at `Normals` (bottom left).
-{{% /alert %}}
+{{% /callout %}}
 
 ### Some available geometries
 
@@ -104,9 +104,9 @@ The `Object_List` and `Tool_List` are not list in the programming point of view 
 Line{2,3,6}; Surface{42:50}; Volume{11,15};
 ```
 
-{{% alert tips %}}
+{{% callout tips %}}
 `Delete;` is optional but generally recommended and forces GMSH to delete the entities passed as argument (both the `tool` and the `object`). Otherwise, there is a high risk of getting dupplicated entites!
-{{% /alert %}}
+{{% /callout %}}
 
 ### The 4 operations
 
@@ -118,9 +118,9 @@ Line{2,3,6}; Surface{42:50}; Volume{11,15};
 |`BooleanDifference`| Substracting  the `tool` to the `object`|
 |`BooleanFragments`| Compute each fragments resulting from the intersection of the entities of the `object` and of the `tool`. This command moreover **delete any dupplicated entities** and make every **interface ~~great again~~ unique**|
 
-{{% alert tips %}}
+{{% callout tips %}}
 `BooleanFragments` is probably the most usefull and powerful operation.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Example: it's a good day to dice
@@ -147,30 +147,30 @@ BooleanIntersection{ Volume{1}; Delete;}{ Volume{2}; Delete;}
 ```
 The intersection between `Volume{1}` (the cube) and `Volume{2}`(the sphere) is computed. Both `Volume` are then deleted due to `Delete;` but GMSH will create a new `Volume` and the possible `Surface` and `Line` associated and, obviously, will provide them a unique identifier. The indices are generally chosen as the "first number available". As the `Volume` 1 and 2 has been deleted, there is "high chance" that the index of the newly created `Volume` will be 1 (because "1" has been freed). This can be check by going in the menu, `Tools→Visiblity`, and check the elementary entities indices (see remark below).
 
-{{% alert warning %}}
+{{% callout warning %}}
 Huge Warning. Numbering has been changed! You have to be **very careful** with that! `Line`, `Surface` and `Volume` indices are **modified** by the `Delete` in the boolean operations!
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert tips %}}
+{{% callout tips %}}
 It can be necessary to **manually** check  the indices of the newly created entities in `Tools→Visiblity` menu (shortcut: `ctrl + shift + v`). Chose then to display `Elementary Entities` in the dropdown menu at bottom left.
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Try it without the `Delete;` command and have a look in the visualisation window (`Tools→Visiblity`). You should see multiple `Volume` that overlap each other...
-{{% /alert %}}
+{{% /callout %}}
 
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Draw this head with a conical hat as in the following figure. Be sure that, in the end, there is only one `Volume`.
 
 To help you design this nice geometry: the sphere is centered at (0,0,0) with a radius equal to 1 while the cone is of parameter (0, 0, 0.5, 0, 0, 1, 1.5, 0).
 
 {{< figure src="../img/bonhomme.png" title="Head with a conical hat" width="300" >}}
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ##  A focus on `BooleanFragments`
@@ -210,14 +210,14 @@ Three entities are created (instead of only one) but there is only one (connecte
 {{< figure src="../img/fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
 
 
-{{% alert note %}}
+{{% callout note %}}
 Arguments order and placement in `BooleanFragments` has no really impact on the result. The `tool` argument can for example be empty as above.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Training examples
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Create a nice mug as the below picture. You can use the `Rotation` operation to rotate the handle:
 ```cpp
 Rotate{{x,y,z}, {xp,yp,zp}, a}{List}
@@ -226,10 +226,10 @@ where (`x`,`y`,`z`) is a vector on the rotation axis, (`xp`,`yp`,`zp`) a point o
 
 {{< figure src="../img/tasse.png" title="Mug" width="300" >}}
 
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Try and reproduce the following geometry
 
 {{< figure src="../img/ecrou.png" title="Mecanichal piece" >}}
-{{% /alert %}}
+{{% /callout %}}
