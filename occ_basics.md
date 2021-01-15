@@ -92,7 +92,7 @@ Using the GUI, you can check the orientation of the [normal vector on the surfac
 
 ### General Syntax
 
-Four boolean operations are available in GMSH. They all need two input arguments: an `object` (first argument) and a `tool` (second argument). The index of the created element can be provided by the user but remember that the result can "different" from what expected: a boolean operation can create multiple entities and hence, applying a single index does not make sense!
+Four boolean operations are available in GMSH. They all need two input arguments: an `object` (first argument) and a `tool` (second argument). The index of the created element can be provided by the user but remember that the result can be "different" from what expected: a boolean operation can create multiple entities and hence, applying a single index does not make sense!
 
 ```cpp
 //Two possible syntax (beware the ";")
