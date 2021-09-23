@@ -1,16 +1,17 @@
 +++
 title = "Geometries & Operations"
-
+linktitle="Geometries & Operations"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-
-math=false
-weight = 120
+math = true
+weight = 22
 diagram = false
 #markup = "mmark"
 
@@ -20,14 +21,6 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "III. CAD with OpenCascade"
-  name = "Geometries & Operations"
-  weight = 120
-
 +++
 
 ## Geometries
@@ -73,7 +66,7 @@ Time to play!
 
 
 {{% callout note %}}
-Using the GUI, you can check the orientation of the [normal vector on the surface]({{< relref "tips_gui.md#options-mesh" >}}): `Tools→Option→Mesh` then select a value (*e.g* 50) at `Normals` (bottom left).
+Using the GUI, you can check the orientation of the [normal vector on the surface]({{< relref "../help/gui.md#options-mesh" >}}): `Tools→Option→Mesh` then select a value (*e.g* 50) at `Normals` (bottom left).
 {{% /callout %}}
 
 ### Some available geometries
@@ -137,7 +130,7 @@ Sphere(2) = {0,0,0, 0.65};
 BooleanIntersection{ Volume{1}; Delete;}{ Volume{2}; Delete;}
 ```
 
-{{< figure src="../img/occ-dice.png" title="Dice" numbered="true">}}
+{{< figure src="../../img//occ-dice.png" title="Dice" numbered="true">}}
 
 ### Analyse of the code
 
@@ -168,7 +161,7 @@ Draw this head with a conical hat as in the following figure. Be sure that, in t
 
 To help you design this nice geometry: the sphere is centered at (0,0,0) with a radius equal to 1 while the cone is of parameter (0, 0, 0.5, 0, 0, 1, 1.5, 0).
 
-{{< figure src="../img/bonhomme.png" title="Head with a conical hat" width="300" >}}
+{{< figure src="../../img//bonhomme.png" title="Head with a conical hat" width="300" >}}
 
 {{% /callout %}}
 
@@ -193,7 +186,7 @@ Mesh 2; // Force GMSH to mesh
 
 Opening this file in GMSH is a deceiving experience: there are 2 meshes and they are overlapping each other!
 
-{{< figure src="../img/fragments_before.png" title="Without `BooleanFragments`: overlapping meshes">}}
+{{< figure src="../../img//fragments_before.png" title="Without `BooleanFragments`: overlapping meshes">}}
 
 Let us now add the fragmentation:
 ```c++
@@ -207,7 +200,7 @@ Mesh 2; // Force GMSH to mesh
 ```
 Three entities are created (instead of only one) but there is only one (connected) mesh and no dupplicated boundaries. The three `Surface` can be regrouped lated into a single `Physical Tag` so this is absolutely not a problem.
 
-{{< figure src="../img/fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
+{{< figure src="../../img//fragments_after.png" title="Maillage superposé : après `BooleanFragments`">}}
 
 
 {{% callout note %}}
@@ -224,12 +217,12 @@ Rotate{{x,y,z}, {xp,yp,zp}, a}{List}
 ```
 where (`x`,`y`,`z`) is a vector on the rotation axis, (`xp`,`yp`,`zp`) a point on the axis and `a` the angle of rotation (in rad). The `List` argument contains the entities to be modified (`Line`, `Surface` and `Volume`). The quantity π in GMSH is given by the hard coded command `Pi`.
 
-{{< figure src="../img/tasse.png" title="Mug" width="300" >}}
+{{< figure src="../../img//tasse.png" title="Mug" width="300" >}}
 
 {{% /callout %}}
 
 {{% callout exercise %}}
 Try and reproduce the following geometry
 
-{{< figure src="../img/ecrou.png" title="Mecanichal piece" >}}
+{{< figure src="../../img//ecrou.png" title="Mecanichal piece" >}}
 {{% /callout %}}

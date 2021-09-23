@@ -1,15 +1,17 @@
 +++
-title = "More geometries"
-
+title = "Advanced geometries"
+linktitle="Advanced geometries"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-math=false
-weight = 30
+math = true
+weight = 12
 diagram = false
 #markup = "mmark"
 
@@ -19,12 +21,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "II. Basic Usage"
-  name = "More geometries"
-  weight = 10
+
 
 +++
 
@@ -58,9 +55,9 @@ Physical Surface(1) = {1};  // Physical Tag
 
 GMSH should display a circle and a menu on the left with 2 parameters that can be modified on runtime :
 
-{{< figure src="../img/basics-advance-menu.png" title="Parameters can be modified on the left menu" numbered="true">}}
+{{< figure src="../../img/basics-advance-menu.png" title="Parameters can be modified on the left menu" numbered="true">}}
 
-What is defined in `DefineConstant` is explained in the [section dedicated to the GUI (Graphical User Interface)]({{<relref "/tips_interactive.md">}}) but basically, these lines add parameters that can be modified by the user in the GUI.
+What is defined in `DefineConstant` is explained in the [section dedicated to the GUI (Graphical User Interface)]({{<relref "../help/interactive-gui.md">}}) but basically, these lines add parameters that can be modified by the user in the GUI.
 
 What is interesting here is the `Circle` commands that draws an arc (with angle less than π). It needs three `Point` to be fully defined (start, center, end):
 ```c++
@@ -80,10 +77,10 @@ Note that drawing a circle needs 3 points at minimum (instead of 4).
 {{% callout exercise %}}
 Time to play:
 
-1. Introduce a circle of center point (0,0) and of radius `Rint` [that can be modified in the GUI]({{< relref "tips_interactive.md">}}), with minimum value 0.1,  maximum value 0.4 and a `Step` of 0.1. You can copy/paste the line where `R` is defined and modify it accordingly.
+1. Introduce a circle of center point (0,0) and of radius `Rint` [that can be modified in the GUI]({{< relref "../help/interactive-gui.md">}}), with minimum value 0.1,  maximum value 0.4 and a `Step` of 0.1. You can copy/paste the line where `R` is defined and modify it accordingly.
 2. Modify the definition of the `Surface` to make it looks like a donut instead of a disk
 
-![Homer eating a Donut](../donut.gif)
+![Homer eating a Donut](../../img/donut.gif)
 
 {{% /callout %}}
 
@@ -109,4 +106,4 @@ Time to play:
 
 The square of width 10 (`{ Surface{1};}`) is extruded (`Extrude`) in the z-direction with length `10` (`{0, 0, 10}`). Applying this code in GMSH gives the following figure:
 
-{{< figure src="../img/cube.png" title="Mesh of the cube" width="300"  numbered="true">}}
+{{< figure src="../../img/cube.png" title="Mesh of the cube" width="300"  numbered="true">}}

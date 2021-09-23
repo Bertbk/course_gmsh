@@ -1,15 +1,17 @@
 +++
 title = "Access the mesh elements"
-
+linktitle="Access the mesh elements"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-math=false
-weight = 320
+math = true
+weight = 32
 diagram = false
 #markup = "mmark"
 
@@ -19,21 +21,13 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "V. API"
-  identifier="api_first_mesh"
-  name = "Access the mesh elements"
-  weight = 320
-
 +++
 {{% callout note %}}
 Every function available in the API is well documented in [the file `gmsh.py`](https://gitlab.onelab.info/gmsh/gmsh/blob/master/api/gmsh.py). Here some of these functions are detailed with some examples. Actually, definition shown here are (truncated) copy/paste from the official documentation.
 {{% /callout %}}
 
 {{% callout note %}}
-I also remind you that in VSCode (+ Python extension), the definition of the function [are displayed in the text editor]({{<relref "intro-help.md#extensions">}}): extremly convenient!
+I also remind you that in VSCode (+ Python extension), the definition of the function [are displayed in the text editor]({{<relref "../help/_index.md#extensions">}}): extremly convenient!
 {{% /callout %}}
 
 
@@ -80,7 +74,7 @@ python square.py
 gmsh square.msh
 ```
 
-{{<figure src="../img/msh-square.png" title="Meshed square" numbered="true">}}
+{{<figure src="../../img/msh-square.png" title="Meshed square" numbered="true">}}
 
 
 ## Nodes

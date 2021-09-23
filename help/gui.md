@@ -1,15 +1,17 @@
 +++
 title = "Graphical User Interface"
-
+linktitle="Graphical User Interface"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-math=false
-weight = 230
+math = true
+weight = 6
 diagram = false
 #markup = "mmark"
 
@@ -19,14 +21,6 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "IV. Tips & Tricks"
-  name = "GUI"
-  weight = 230
-
 +++
 
 {{% callout note %}}
@@ -56,7 +50,7 @@ In GMSH, a `View` corresponds to a function visualized on a mesh.
 
 Please use the bottom buttons `X`, `Y` and `Z` to reset the camera along an axis. The `1:1` button reset the scale (zoom).
 
-{{< figure src="../img/gui_camera.png" title="Camera" numbered="true">}}
+{{< figure src="../../img//gui_camera.png" title="Camera" numbered="true">}}
 
 ## Options `General`
 
@@ -95,7 +89,7 @@ Again, the `Visibility` tab propose to display:
 - The face of the element to make then opaque
 - Normal and Tangent vectors (bottom)
 
-{{< figure src="../img/gui_normals.jpg" title="Displaying normal vectors">}}
+{{< figure src="../../img//gui_normals.jpg" title="Displaying normal vectors">}}
 
 
 ## `View` options (Post-Processing)
@@ -147,7 +141,7 @@ This is where the `View` (not the function!) can be transformed:
 - Translation, Rotation, ... according to the matrix (rotation) and vector (translation)
 - `Normal Raise`: plot a 2D solution in 3D (example below)
 
-{{< figure src="../img/gui_normalraise.png" title="`Normal Raise` example">}}
+{{< figure src="../../img//gui_normalraise.png" title="`Normal Raise` example">}}
 
 
 ### Color

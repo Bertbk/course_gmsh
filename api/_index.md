@@ -1,15 +1,17 @@
 +++
 title = "API: Overview"
-
+linktitle="API"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-math=false
-weight = 310
+math = true
+weight = 30
 diagram = false
 #markup = "mmark"
 
@@ -19,17 +21,10 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "V. API"
-  name = "Overview"
-  weight = 310
-
 +++
 
 {{% callout note %}}
-Be sure to have installed the SDK or have compiled GMSH using the `ENABLE_LIB` options. See [the first section of this course for more information]({{<relref "_index.md#api">}}).
+Be sure to have installed the SDK or have compiled GMSH using the `ENABLE_LIB` options. See [the first section of this course for more information]({{<relref "../_index.md#api">}}).
 {{% /callout %}}
 
 {{% callout note %}}
@@ -107,12 +102,12 @@ should open a GMSH window with a meshed disk
 
 
 {{% callout exercise %}}
-Using Python API, rebuild the ["L-shape" geometry]({{< relref "basics_firstmesh.md#line-and-curve-loop-entities">}}).
+Using Python API, rebuild the ["L-shape" geometry]({{< relref "../basics/_index.md#line-and-curve-loop-entities">}}).
 {{% /callout %}}
 
 ## OpenCASCADE CAD Engine
 
-Let us redo the [CAD example]({{<relref "occ_overview.md#a-short-example">}}) using the Python API. This example can also be [downloaded from the source code of GMSH](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/api/boolean.py):
+Let us redo the [CAD example]({{<relref "../occ/_index.md#a-short-example">}}) using the Python API. This example can also be [downloaded from the source code of GMSH](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/api/boolean.py):
 
 ```python
 # This reimplements gmsh/demos/boolean/boolean.geo in Python.
@@ -153,5 +148,5 @@ gmsh.finalize()
 ```
 
 {{% callout exercise %}}
-Using Python API, rebuild [one of the geometry proposed previously]({{< relref "occ_basics.md#training-examples">}}).
+Using Python API, rebuild [one of the geometry proposed previously]({{< relref "../occ/basics.md#training-examples">}}).
 {{% /callout %}}

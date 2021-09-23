@@ -1,15 +1,17 @@
 +++
 title = "Interactive GUI"
-
+linktitle="Interactive GUI"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-math=false
-weight = 210
+math = true
+weight = 9
 diagram = false
 #markup = "mmark"
 
@@ -19,15 +21,6 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "IV. Tips & Tricks"
-  name = "Interactive GUI"
-  weight = 210
-
-
 +++
 
 ## Reference geometry

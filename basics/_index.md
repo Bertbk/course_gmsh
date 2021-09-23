@@ -1,15 +1,17 @@
 +++
-title = "First Mesh"
-
+title = "Basics"
+linktitle="Basics"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-math=false
-weight = 20
+math = true
+weight = 10
 diagram = false
 #markup = "mmark"
 
@@ -19,16 +21,10 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "II. Basic Usage"
-  name = "First mesh"
-  weight = 1
 
 +++
 
-## My first square
+## My first mesh : a square
 
 ### Let's go
 
@@ -85,7 +81,7 @@ Mesh can be saved using `CTRL + Shift + s` or using graphical interface (`file->
 
 
 {{% callout note %}}
-[GUI is detailed in a next section]({{< relref "/tips_gui.md">}}).
+[GUI is detailed in a next section]({{< relref "..//help/gui.md">}}).
 {{% /callout %}}
 
 ## Code analyse
@@ -194,4 +190,4 @@ This is particular to GMSH and do not affect the geometry rather than the output
 Physical Volume/Surface/Line/Point(index) = {entity1, entity2, ..., entityN};
 ```
 
-Basically, GMSH can set a unique identifier (`index`) to a **set of entities** (to regroup them). This new identifier has nothing to do with the previous one you have defined. The output file do not contain the `elementary` index but only the `physical` ones. Moreover, only the entities that have a `physical` tag are saved to the disk! This is [explained in detail later]({{< relref "basics_physical_vs_elementary.md">}}). 
+Basically, GMSH can set a unique identifier (`index`) to a **set of entities** (to regroup them). This new identifier has nothing to do with the previous one you have defined. The output file do not contain the `elementary` index but only the `physical` ones. Moreover, only the entities that have a `physical` tag are saved to the disk! This is [explained in detail later]({{< relref "physical_vs_elementary.md">}}). 

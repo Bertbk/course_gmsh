@@ -1,15 +1,17 @@
 +++
 title = "Exercise"
-
+linktitle="Exercise"
+summary=""
+type="book"
+icon=""
+icon_pack=""
 date = 2018-09-09T00:00:00
-# lastmod = 2018-09-09T00:00:00
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
-type = "docs"  # Do not modify.
 
-math=true
-weight = 330
+math = true
+weight = 36
 diagram = false
 #markup = "mmark"
 
@@ -19,14 +21,6 @@ edit_page = {repo_url = "https://github.com/Bertbk/gmsh", repo_branch = "master"
   icon = "github"
   repo = "https://github.com/Bertbk/course_gmsh"
   submodule_dir = "tutorial/gmsh/"
-  
-# Add menu entry to sidebar.
-[menu.gmsh]
-  parent = "V. API"
-  identifier="api_exercise"
-  name = "Exercise"
-  weight = 330
-
 +++
 
 ## Discrete Function
@@ -39,4 +33,4 @@ Using GMSH API, build a code that:
 
 This program can obviously be done without GMSH (and way faster without!). It's just a toy program!
 
-{{< figure src="../img/api-exercice-1d.png" title="Result" numbered="true">}}
+{{< figure src="../../img/api-exercice-1d.png" title="Result" numbered="true">}}
