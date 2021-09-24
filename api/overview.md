@@ -102,12 +102,12 @@ should open a GMSH window with a meshed disk
 
 
 {{% callout exercise %}}
-Using Python API, rebuild the ["L-shape" geometry]({{< relref "../basics/_index.md#line-and-curve-loop-entities">}}).
+Using Python API, rebuild the ["L-shape" geometry]({{< relref "../basics/first-mesh.md#line-and-curve-loop-entities">}}).
 {{% /callout %}}
 
 ## OpenCASCADE CAD Engine
 
-Let us redo the [CAD example]({{<relref "../occ/_index.md#a-short-example">}}) using the Python API. This example can also be [downloaded from the source code of GMSH](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/api/boolean.py):
+Let us redo the [CAD example]({{<relref "../occ/overview.md#a-short-example">}}) using the Python API. This example can also be [downloaded from the source code of GMSH](https://gitlab.onelab.info/gmsh/gmsh/raw/master/demos/api/boolean.py):
 
 ```python
 # This reimplements gmsh/demos/boolean/boolean.geo in Python.

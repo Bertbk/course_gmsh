@@ -27,7 +27,7 @@ Every function available in the API is well documented in [the file `gmsh.py`](h
 {{% /callout %}}
 
 {{% callout note %}}
-I also remind you that in VSCode (+ Python extension), the definition of the function [are displayed in the text editor]({{<relref "../help/_index.md#extensions">}}): extremly convenient!
+I also remind you that in VSCode (+ Python extension), the definition of the function [are displayed in the text editor]({{<relref "../help/workflow.md#extensions">}}): extremly convenient!
 {{% /callout %}}
 
 
